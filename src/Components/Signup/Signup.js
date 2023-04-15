@@ -17,24 +17,24 @@ export default function Signup(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const validationErrors = {};
-    // if (name.trim() === "") {
-    //   validationErrors.name = true;
-    // }
-    // if (email.trim() === "") {
-    //   validationErrors.email = true;
-    // } else if (!/\S+@\S+\.\S+/.test(email)) {
-    //   validationErrors.email = true;
-    // }
-    // if (password.trim() === "") {
-    //   validationErrors.password = true;
-    // }
+    const validationErrors = {};
+    if (name.trim() === "") {
+      validationErrors.name = true;
+    }
+    if (email.trim() === "") {
+      validationErrors.email = true;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      validationErrors.email = true;
+    }
+    if (password.trim() === "") {
+      validationErrors.password = true;
+    }
 
-    // // Update state with validation errors, if any
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   return;
-    // }
+    // Update state with validation errors, if any
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
     try {
       // Make a POST request to the backend API using Axios
