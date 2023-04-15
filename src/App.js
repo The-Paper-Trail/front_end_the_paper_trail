@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './Components/Navbar/NavBar';
+import Signin from './Components/Signin/Signin';
+import { Routes, Route } from "react-router-dom";
+import { useState } from 'react';
+import Signup from './Components/Signup/Signup';
+
+
 
 function App() {
+
+const [currentForm,setcurrentForm]= useState("signin");
+
+const toggleForm=(formName)=>{
+setcurrentForm(formName);
+
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        {currentForm == "signin" ? (
+          <Signin onFormSwitch={toggleForm} />
+        ) : (
+          <Signup onFormSwitch={toggleForm} />
+        )}
+
+        <header className="App-header">
+          <NavBar />
+          <Routes>
+            {/* <Route path="/" element={<Home />} />
+          <Route path="/favList" element={<FavList />} /> */}
+
+          </Routes>
+
+        </header>
+      </div>
+    </>
   );
 }
 

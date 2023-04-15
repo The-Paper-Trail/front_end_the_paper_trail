@@ -1,0 +1,49 @@
+
+.auth,.signform{
+display: flex;
+flex-direction: column;
+background-color: rgb(114, 20, 98);
+width: 300px;
+height: 500px;
+/* align-items: center; */
+justify-content: center;
+color:black;
+text-align: left;
+}
+.signform{
+    padding: 20px;
+
+}
+
+
+label{
+    text-align: left;
+    padding: 0.25rem;
+}
+
+input{
+    margin: .25rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 13px;
+
+}
+
+.submit{
+ margin-top: 10px ;
+border: none;
+padding: 10px;
+border-radius: 13px;
+cursor: pointer;
+color: blueviolet;
+
+
+}
+.Signbutton{
+    background: none;
+    color:white;
+    border: none;
+    text-decoration: underline;
+    margin-top:-66px;
+    
+}
