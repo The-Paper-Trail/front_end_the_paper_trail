@@ -1,5 +1,6 @@
 
 import Cards from '../Cards/Cards'
+import Details from '../Details/Details'
 import{ useState, useEffect } from 'react';
 
 
@@ -28,6 +29,8 @@ export default function Home (){
         <>
         {/* <Navbar /> */}
         <Cards  books={books} />
+        <Details  books={books} />
+
         {/* <Footer/> */}
        
       
