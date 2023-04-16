@@ -1,19 +1,17 @@
-import './App.css';
-import Signin from './Components/Signin/Signin';
+
+import React from "react";
+import Signin from "./Components/Signin/Signin";
 import { Routes, Route } from "react-router-dom";
-import { useState } from 'react';
-import Signup from './Components/Signup/Signup';
-import Header from './Components/Header/Header';
+import { useState } from "react";
+import Signup from "./Components/Signup/Signup";
+import Header from "./Components/Header/Header";
 
-
-function App() {
+function Switch() {
 const [currentForm, setcurrentForm] = useState("signin");
 
-const toggleForm = (formName) => {
+function toggleForm (formName) {
   setcurrentForm(formName);
 };
-
-
 
   return (
     <>
@@ -22,9 +20,9 @@ const toggleForm = (formName) => {
           <Header />
         </header>
         {currentForm == "signin" ? (
-          <Signin onFormSwitch={toggleForm} />
+          <Signin onFormSwitch={() => toggleForm(currentForm)} />
         ) : (
-          <Signup onFormSwitch={toggleForm} />
+          <Signup onFormSwitch={() => toggleForm(currentForm)} />
         )}
         <Routes>
           {/* <Route path="/" element={<Home />} />
@@ -37,4 +35,4 @@ const toggleForm = (formName) => {
   );
 }
 
-export default App;
+export default Switch;
