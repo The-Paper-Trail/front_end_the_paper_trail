@@ -38,12 +38,15 @@ export default function Signin(props) {
     })
 
     const receivedData = await response.json();
-    console.log(receivedData)
+    
+    
+    if (response.status === 202) {
+      console.log(receivedData)
     const userData = (receivedData[0])
     localStorage.setItem("userData", JSON.stringify(userData));
-    
-    if (response.status === 201) {
       alert("successfully added to database")
+    }else if((response.status === 200)){
+      alert("check email or password")
     }
 
 
@@ -74,13 +77,12 @@ export default function Signin(props) {
           <Button variant="primary" className="submit" type="submit">
             Sign In
           </Button>
+        </Form>
           <Nav>
-
             <Nav.Link href="/signup" id="signup">
               Don't have an account? Sign up
             </Nav.Link>
           </Nav>
-        </Form>
       </div >
     </>
   );
