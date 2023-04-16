@@ -1,28 +1,37 @@
+
+
+
 import { Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "./NavBar.css"
+// import { useState } from "react";
 
 export default function NavBar() {
+//   const [view, setViwe] = useState(true);
+//   function viweHandler(e) {
+//     e.preventDefault();
 
+//     setViwe(!view)
+// }
 
- return (
-   <>
-     <Nav>
-       <div id="navbar">
-         <Nav.Link href="/">Home</Nav.Link>
-         <Nav.Link href="/favpage">Favorite </Nav.Link>
-         <Nav.Link href="/profile">Profile</Nav.Link>
-       </div>
+  return (
+    <>
+      <Nav>
+      
+        <div id="navbar">
+          <Nav.Link href="/">Home</Nav.Link>
+          
+          <Nav.Link href="/favpage">Favorite </Nav.Link>
+          <Nav.Link href="/profile">Profile</Nav.Link>
+        </div>
         <div id="inup">
-       <Nav.Link href="/signin" id="signin">
+        <Nav.Link href="/signin" id="signin">
          Sign In
        </Nav.Link>
-       <Nav.Link href="/signup" id="signup">
-         Sign up
-       </Nav.Link>
-     </div>
-     </Nav>
+        {/* {view && <text  className="boton" onClick={(e) => viweHandler(e)}> Sign In </text>}
+          {!view &&  <text className="boton" onClick={(e) => viweHandler(e)}>logaut </text>} */}
+        </div>
+      </Nav>
 
-   </>
- );
+    </>
+  );
 }

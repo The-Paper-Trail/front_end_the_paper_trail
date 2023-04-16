@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Nav } from "react-bootstrap";
+
 import "./Signup.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -92,13 +94,13 @@ export default function Signup(props) {
           </Button>
         </Form>
 
-        <button
-          onClick={() => props.onFormSwitch("signin")}
-          className="Signbutton"
-          type="submit"
-        >
-          Already have an account? Sign in
-        </button>
+        <Nav>
+
+        <Nav.Link href="/signin" id="signin">
+        Already have an account? Sign in
+        </Nav.Link>
+      </Nav>
+        
       </div>
     </>
   );

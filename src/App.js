@@ -21,14 +21,12 @@ const toggleForm = (formName) => {
         <header className="App-header">
           <Header />
         </header>
-        {currentForm == "signin" ? (
+        {/* {currentForm === "signin" ? (
           <Signin onFormSwitch={toggleForm} />
         ) : (
           <Signup onFormSwitch={toggleForm} />
-        )}
+        )} */}
         <Routes>
-          {/* <Route path="/" element={<Home />} />
-          <Route path="/favList" element={<FavList />} /> */}
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
