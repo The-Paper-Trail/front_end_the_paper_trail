@@ -37,14 +37,13 @@ export default function Signin(props) {
       body: JSON.stringify(data),
     })
 
-    
-    if (response.status === 200) {
-      alert("successfully login")
-      const receivedData = await response.json();
+    const receivedData = await response.json();
     console.log(receivedData)
     const userData = (receivedData[0])
     localStorage.setItem("userData", JSON.stringify(userData));
     
+    if (response.status === 201) {
+      alert("successfully added to database")
     }
 
 
