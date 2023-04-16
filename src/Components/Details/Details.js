@@ -1,34 +1,31 @@
-import DetailsRender from '../DetailsRender/DetailsRender'
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import DetailsRender from '../DetailsRender/DetailsRender';
 import { useParams } from "react-router-dom";
-export default function Details(props){
+
+const Details = () => {
+    const [books, setBooks] = useState([]);
+
     let { id } = useParams();
-  
+    useEffect(() => {
+        const getBooks = async () => {
+            const url = process.env.REACT_APP_SERVER_URL;
+            const response = await fetch(`${url}/getbooks`);
+            const booksData = await response.json();
+            setBooks(booksData);
+        }
+
+        getBooks();
+    }, []);
 
     return (
-        
         <>
-        {
-
-            console.log("before")
-
-        }
-        {
-            
-        props.books.map((books) => {
-            console.log("aftwer");
-            if (books.bookID === id) {
-                return (
-                    <DetailsRender book = {books}/>
-                )
-              }
- 
-        })
-    }
+            {books.map((book) => {
+                if (book.bookID == id) {
+                    return <DetailsRender book={book} />
+                }
+            })}
         </>
-  
-        
-          
-        
-      );
+    );
 }
+
+export default Details;
