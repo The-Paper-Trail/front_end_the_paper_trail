@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-
+import { Link } from "react-router-dom";
 
 
 
@@ -14,7 +14,9 @@ export default function SingleCard(props) {
       <Card.Body>
         <Card.Title>{props.books.title}</Card.Title>
         <Card.Text>{props.books.description}</Card.Text>
-        <Button variant="primary">SHOW</Button>
+        <Link to  = {`/bookID/${props.books.bookID}`}>
+        <Button  variant="primary">SHOW</Button>
+        </Link>
         <Button variant="primary">ADD TO FAV</Button>
         
       </Card.Body>
