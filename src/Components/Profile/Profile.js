@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './Profile.css';
+import Footer from "../Footer/Footer";
 
 
 function Profile() {
@@ -31,7 +32,7 @@ const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await addToFavHandler();
+        await updateUserHandler();
     };
     useEffect(() => {
 
@@ -46,7 +47,7 @@ const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id
     }, []);
 
 
-    async function addToFavHandler() {
+    async function updateUserHandler() {
         const storedData = JSON.parse(localStorage.getItem("userData"));
         let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${storedData.email}`;
         let data1 = {
@@ -120,6 +121,7 @@ const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id
                 <Modal.Footer>
                 </Modal.Footer>
             </Modal>
+            <Footer />
         </>
     );
 }
