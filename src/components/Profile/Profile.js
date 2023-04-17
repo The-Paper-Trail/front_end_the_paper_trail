@@ -1,87 +1,97 @@
-import React from 'react';
 import { useEffect, useState } from "react";
-import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import './Profile.css';
 
-
-class DescriptionBox extends React.Component {
-    render() {
-        return (
-            <div className="description-box">
-                <h2>Description</h2>
-                <p>{this.props.description}</p>
-            </div>
-        );
-    }
-}
 
 function Profile() {
-    const [user, setUser] = useState({});
+    const [showModal, setShowModal] = useState(false);
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState('');
+    // const [email, setEmail] = useState('');
 
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/getUser`);
-            const data = await response.json();
-            setUser(data);
+    const handleShowModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
+    const handleDescriptionChange = (e) => setDescription(e.target.value);
+    const handleImageChange = (e) => setImage(e.target.value);
+
+
+
+    async function handleUpdate() {
+        let email = "ahmadjehad1212@gmail.com";
+        handleCloseModal();
+
+
+        let data1 = {
+            "discription": `${description}`,
+            "url_img": `${image}`
         }
-        fetchData();
-    }, []);
 
-    async function handleUpdate(email, data) {
+        console.log(email);
         let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${email}`;
-        let response = await fetch(url, {
+        const response = await fetch(url, {
             method: "PUT",
             headers: {
                 "content-Type": "application/json"
             },
-            body: JSON.stringify(data),
-
+            body: JSON.stringify(data1),
         })
+        const receivedData = await response.json();
+        console.log(1111, receivedData)
+
+        if (response.status === 201) {
+            alert("successfully added to database")
+        }
     }
+
+
+
+
+
     return (
         <>
-        {/* <Navber /> */}
             <h1>Profile</h1>
             <h3>UserName</h3>
             <img src="https://th.bing.com/th/id/OIP.scExuNqSeL_zvoAQbH0gWAAAAA?pid=ImgDet&rs=1" alt="Profile image" />
+            <div class="description-box">
+                <h2>Description</h2>
+                <p>This is the description of my content.</p>
+            </div>
 
-            <DescriptionBox description="This is a description of my profile." />
-            <Button variant="primary" onClick={() => handleUpdate(user.email)}>Update
-            <Modal show={props.show} onHide={props.handleClose} >
-            <Modal.Header closeButton>
-                <Modal.Title>{props.user.email}</Modal.Title>
-            </Modal.Header>
-            <img src={`https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`} alt={props.movie.title} />
-            <Modal.Body>{props.user.description}</Modal.Body>
-            <br/>
-            <br/>
-            {props.movie.comment? props.movie.comment: "No comment Added"}
-            <br/>
-            <Form>
-                <Form.Group>
-                    <Form.Label>Update</Form.Label>
-                    <Form.Control type="text" ref={commentRef} rows={3} />
-                </Form.Group>
-                <Button variant='primary' type='submit' onClick={(e)=>submitHandler(e)} >
-                    Submit
-                </Button>
-
-                
-            </Form>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={props.handleClose}>
-                    Close
-                </Button>
-                <Button variant="primary" onClick={props.handleClose}>
-                    Save Changes
-                </Button>
-            </Modal.Footer>
-        </Modal>
+            <Button variant="primary" onClick={handleShowModal}>
+                Profile
             </Button>
-            <Footer />
+
+            <Modal show={showModal} onHide={handleCloseModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Profile</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formDescription">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control type="text" value={description} onChange={handleDescriptionChange} />
+                        </Form.Group>
+
+                        <Form.Group controlId="formImage">
+                            <Form.Label>Image</Form.Label>
+                            <Form.Control type="text" value={image} onChange={handleImageChange} />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModal}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={handleUpdate}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }
 
-
 export default Profile;
+
