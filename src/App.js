@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Signup from './Components/Signup/Signup';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home'
+import FavPage from './Components/FavoriteList/FavoriteList'
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="//favpage" element={<FavPage />} />
         </Routes>
       </div>
     </>
