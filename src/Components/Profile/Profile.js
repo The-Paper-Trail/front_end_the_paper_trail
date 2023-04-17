@@ -12,6 +12,11 @@ function Profile() {
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
 
+
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+const storedDescription = storedData ? storedData.discription : '';
+const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id/OIP.scExuNqSeL_zvoAQbH0gWAAAAA?pid=ImgDet&rs=1";
+
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
     const handleDescriptionChange = (e) => setDescription(e.target.value);
@@ -19,7 +24,7 @@ function Profile() {
 
 
 
-   
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -32,30 +37,20 @@ function Profile() {
         const storedData = JSON.parse(localStorage.getItem("userData"));
 
         if (!storedData) {
-            
-             navigate("/", { replace: true });
-            
-            alert("Please sign in before entering this page")
+
+            navigate("/", { replace: true });
+
+            // alert("Please sign in before entering this page")
         }
     }, []);
-    // useEffect(() => {
-    //     const storedData = JSON.parse(localStorage.getItem("userData"));
-      
-    //     if (!storedData ) {
-    //       setTimeout(function() {
-    //         navigate("/", { replace: true });
-    //       }, 1000);
-    //       alert("Please sign in before entering this page");
-    //     }
-    //   }, []);
 
 
     async function addToFavHandler() {
         const storedData = JSON.parse(localStorage.getItem("userData"));
         let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${storedData.email}`;
         let data1 = {
-            "discription": description ==""? storedData.discription: `${description}`,
-            "url_img": image ==""? storedData.url_img: `${image}`
+            "discription": description == "" ? storedData.discription : `${description}`,
+            "url_img": image == "" ? storedData.url_img : `${image}`
         };
         const response = await fetch(url, {
             method: "PUT",
@@ -82,15 +77,16 @@ function Profile() {
 
 
 
-
+    // "https://th.bing.com/th/id/OIP.scExuNqSeL_zvoAQbH0gWAAAAA?pid=ImgDet&rs=1"
     return (
         <>
             <h1>Profile</h1>
             <h3>UserName</h3>
-            <img src="https://th.bing.com/th/id/OIP.scExuNqSeL_zvoAQbH0gWAAAAA?pid=ImgDet&rs=1" alt="Profile image" />
+            <img src={storedImage} alt="Profile image" />
             <div class="description-box">
                 <h2>Description</h2>
-                <p>This is the description of my content.</p>
+                {/* <p>This is the description of my content.</p> */}
+                <p>{storedDescription}</p>
             </div>
 
             <Button variant="primary" onClick={handleShowModal}>
@@ -112,12 +108,12 @@ function Profile() {
                             <Form.Label>Image</Form.Label>
                             <Form.Control type="text" value={image} onChange={handleImageChange} />
                         </Form.Group>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                        Cancel
-                    </Button>
-                    <Button variant="primary" onClick={handleSubmit}>
-                        Save Changes
-                    </Button>
+                        <Button variant="secondary" onClick={handleCloseModal}>
+                            Cancel
+                        </Button>
+                        <Button variant="primary" onClick={handleSubmit}>
+                            Save Changes
+                        </Button>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
