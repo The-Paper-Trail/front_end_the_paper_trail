@@ -14,12 +14,10 @@ export default function Home (){
         const url=process.env.REACT_APP_SERVER_URL;
         const response = await fetch(`${url}/getbooks`);
         const booksData = await response.json();
-        // console.log("data as json" ,booksData);
         
-       
-        setBooks(booksData);
-        // console.log("data from state",books);
 
+        setBooks(booksData);
+        
     }
     useEffect(()=>{
         getBooks();
