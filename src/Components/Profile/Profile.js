@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -9,7 +11,6 @@ function Profile() {
     const [showModal, setShowModal] = useState(false);
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
-    // const [email, setEmail] = useState('');
 
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
@@ -18,33 +19,66 @@ function Profile() {
 
 
 
-    async function handleUpdate() {
-        let email = "ahmadjehad1212@gmail.com";
-        handleCloseModal();
+   
+    const navigate = useNavigate();
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-        let data1 = {
-            "discription": `${description}`,
-            "url_img": `${image}`
+        await addToFavHandler();
+    };
+    useEffect(() => {
+
+        const storedData = JSON.parse(localStorage.getItem("userData"));
+
+        if (!storedData) {
+            
+             navigate("/", { replace: true });
+            
+            alert("Please sign in before entering this page")
         }
+    }, []);
+    // useEffect(() => {
+    //     const storedData = JSON.parse(localStorage.getItem("userData"));
+      
+    //     if (!storedData ) {
+    //       setTimeout(function() {
+    //         navigate("/", { replace: true });
+    //       }, 1000);
+    //       alert("Please sign in before entering this page");
+    //     }
+    //   }, []);
 
-        console.log(email);
-        let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${email}`;
+
+    async function addToFavHandler() {
+        const storedData = JSON.parse(localStorage.getItem("userData"));
+        let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${storedData.email}`;
+        let data1 = {
+            "discription": description ==""? storedData.discription: `${description}`,
+            "url_img": image ==""? storedData.url_img: `${image}`
+        };
         const response = await fetch(url, {
             method: "PUT",
             headers: {
-                "content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(data1),
-        })
+        });
+
         const receivedData = await response.json();
-        console.log(1111, receivedData)
+        console.log(response);
+        console.log(receivedData);
 
-        if (response.status === 201) {
-            alert("successfully added to database")
+        if (response.status === 200) {
+            console.log(receivedData);
+            const userData = receivedData;
+            localStorage.setItem("userData", JSON.stringify(userData));
+            navigate("/profile");
+        } else {
+            // alert("Error updating profile.");
         }
-    }
 
+    }
 
 
 
@@ -60,12 +94,12 @@ function Profile() {
             </div>
 
             <Button variant="primary" onClick={handleShowModal}>
-                Profile
+                Update
             </Button>
 
             <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Profile</Modal.Title>
+                    <Modal.Title>Update</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -78,15 +112,15 @@ function Profile() {
                             <Form.Label>Image</Form.Label>
                             <Form.Control type="text" value={image} onChange={handleImageChange} />
                         </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Cancel
                     </Button>
-                    <Button variant="primary" onClick={handleUpdate}>
+                    <Button variant="primary" onClick={handleSubmit}>
                         Save Changes
                     </Button>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
                 </Modal.Footer>
             </Modal>
         </>
