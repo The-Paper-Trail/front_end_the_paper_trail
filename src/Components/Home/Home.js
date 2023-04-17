@@ -1,5 +1,4 @@
-
-
+import Cards from '../Cards/Cards'
 import{ useState, useEffect } from 'react';
 
 
@@ -25,9 +24,7 @@ export default function Home (){
     return(
         <>
         {/* <Navbar /> */}
-        {/* <Cards    books={books} />
-        <Details  books={books} /> */}
-
+        { <Cards    books={books} />
         {/* <Footer/> */}
        
       
