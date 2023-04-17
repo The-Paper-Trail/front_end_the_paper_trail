@@ -25,11 +25,9 @@ export default function Home (){
         <>
         {/* <Navbar /> */}
         <Cards    books={books} />
-        
-
         {/* <Footer/> */}
-
-
+       
+      
         </>
     )
 }
