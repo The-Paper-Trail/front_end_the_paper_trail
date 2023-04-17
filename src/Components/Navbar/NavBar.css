@@ -1,0 +1,28 @@
+#navbar{
+margin-top :100px;
+margin-left: 530px;
+display: flex;
+
+}
+
+
+a{
+  margin-right: 1rem;
+
+}
+
+#inup{
+display: flex;
+margin-top :100px;
+margin-left: 270px;
+}
+#signup{
+  background-color: rgb(247, 247, 247);
+  border-radius: 5px;
+  color:black;
+
+}
+#signin{
+  background-color: rgb(247, 247, 247);
+  border-radius: 5px;
+}
