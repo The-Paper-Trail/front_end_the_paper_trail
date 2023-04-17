@@ -14,6 +14,7 @@ function Profile() {
 
 
     const storedData = JSON.parse(localStorage.getItem("userData"));
+    const storedUsername = storedData ? storedData.username : '';
 const storedDescription = storedData ? storedData.discription : '';
 const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id/OIP.scExuNqSeL_zvoAQbH0gWAAAAA?pid=ImgDet&rs=1";
 
@@ -81,7 +82,7 @@ const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id
     return (
         <>
             <h1>Profile</h1>
-            <h3>UserName</h3>
+            <h3>{storedUsername}</h3>
             <img src={storedImage} alt="Profile image" />
             <div class="description-box">
                 <h2>Description</h2>
