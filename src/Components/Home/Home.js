@@ -1,4 +1,3 @@
-
 import Cards from '../Cards/Cards'
 import{ useState, useEffect } from 'react';
 
@@ -15,9 +14,9 @@ export default function Home (){
         const response = await fetch(`${url}/getbooks`);
         const booksData = await response.json();
         
-
+       
         setBooks(booksData);
-        
+
     }
     useEffect(()=>{
         getBooks();
@@ -25,13 +24,12 @@ export default function Home (){
     return(
         <>
         {/* <Navbar /> */}
-        <Cards  books={books} />
-      
+        <Cards    books={books} />
+        
 
         {/* <Footer/> */}
-       
-      
+
+
         </>
     )
 }
-
