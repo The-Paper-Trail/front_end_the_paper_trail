@@ -24,7 +24,7 @@ export default function Home (){
     return(
         <>
         {/* <Navbar /> */}
-        { <Cards    books={books} />
+        <Cards    {books={books} />
         {/* <Footer/> */}
        
       
