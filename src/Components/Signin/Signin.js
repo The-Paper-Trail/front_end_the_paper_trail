@@ -1,59 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Nav } from "react-bootstrap";
-
+import Home from "../Home/Home";
+import { useNavigate } from "react-router-dom";
 import "../Signup/Signup.css";
-// import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useNavigate } from "react-router-dom";
-// import InputGroup from "react-bootstrap/InputGroup";
+
 export default function Signin(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email);
     console.log(password);
 
-    addToFavHandler(e, email, password)
+    await addToFavHandler();
   };
 
-  async function addToFavHandler(e) {
-    e.preventDefault();
-
-    let url = `${process.env.REACT_APP_URL}/getUser`;
+  async function addToFavHandler() {
+    let url = `${process.env.REACT_APP_SERVER_URL}/getUser`;
 
     let data = {
       email: email,
-      password: password
-    }
+      password: password,
+    };
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
+    });
 
     const receivedData = await response.json();
-    
-    
+
     if (response.status === 202) {
-      console.log(receivedData)
-    const userData = (receivedData[0])
-    localStorage.setItem("userData", JSON.stringify(userData));
-      alert("successfully added to database")
-    }else if((response.status === 200)){
-      alert("check email or password")
+      console.log(receivedData);
+      const userData = receivedData[0];
+      localStorage.setItem("userData", JSON.stringify(userData));
+      navigate("/");
+    } else if (response.status === 200) {
+      alert("check email or password");
     }
-
-
   }
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    if (storedData) {
+      navigate("/", { replace: true });
+    }
+  }, []);
+
   return (
-    <>
-     
+    <div>
       <div className="auth">
         <Form className="signform" onSubmit={handleSubmit}>
           <Form.Group controlId="email">
@@ -78,12 +80,12 @@ export default function Signin(props) {
             Sign In
           </Button>
         </Form>
-          <Nav>
-            <Nav.Link href="/signup" id="signup">
-              Don't have an account? Sign up
-            </Nav.Link>
-          </Nav>
-      </div >
-    </>
+        <Nav>
+          <Nav.Link href="/signup" id="signup">
+            Don't have an account? Sign up
+          </Nav.Link>
+        </Nav>
+      </div>
+    </div>
   );
 }

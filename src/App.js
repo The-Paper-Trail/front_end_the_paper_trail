@@ -4,16 +4,11 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 import Signup from './Components/Signup/Signup';
 import Header from './Components/Header/Header';
+import Home from './Components/Home/Home'
+
 
 
 function App() {
-const [currentForm, setcurrentForm] = useState("signin");
-
-const toggleForm = (formName) => {
-  setcurrentForm(formName);
-};
-
-
 
   return (
     <>
@@ -21,12 +16,9 @@ const toggleForm = (formName) => {
         <header className="App-header">
           <Header />
         </header>
-        {/* {currentForm === "signin" ? (
-          <Signin onFormSwitch={toggleForm} />
-        ) : (
-          <Signup onFormSwitch={toggleForm} />
-        )} */}
+
         <Routes>
+          <Route path='/' element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
