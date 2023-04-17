@@ -4,6 +4,9 @@ import{ useState, useEffect } from 'react';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+// import Dropdown from 'react-bootstrap/Dropdown';
+import { Dropdown } from "rsuite";
+import "rsuite/dist/rsuite.min.css";
 
 
 
@@ -46,19 +49,22 @@ export default function Details(props){
                          <Card.Text>Author : {books.author}</Card.Text>
                          <Card.Text>Description about the book : <br></br>{books.description}</Card.Text>
                          <Card.Text>Publisher : {books.publisher}</Card.Text>
-                         <Card.Text>Contributor : {books.contributor}</Card.Text>
+                         <Card.Text>Contribution {books.contributor}</Card.Text>
                          <Card.Text>Are you thinking of buying it?</Card.Text>
-
-                       
-                     
-                         
-
-                         <Button variant="primary">SHOW</Button>
-
-
-                         <Button variant="primary">ADD TO FAV</Button>
-                         
-                         
+                         <Card.Text>Choose site to buy from</Card.Text>
+                         <Dropdown title="Buy">
+                                <Dropdown.Item as="a" href={books.amazon_link}>
+                                 Amazon
+                                </Dropdown.Item>
+                  
+                                <Dropdown.Item as="a" href={books.apple_books_link}>
+                                Apple Books
+                                </Dropdown.Item>
+                  
+                                <Dropdown.Item as="a" href={books.barnes_and_noble_link}>
+                                Barnes and Noble
+                                </Dropdown.Item>
+                            </Dropdown>  
                        </Card.Body>
                      </Card>
                 )
