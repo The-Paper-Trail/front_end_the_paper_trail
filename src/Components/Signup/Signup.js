@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Nav } from "react-bootstrap";
-
+import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -15,6 +15,7 @@ export default function Signup(props) {
     email: false,
     password: false,
   });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,68 +41,101 @@ export default function Signup(props) {
 
     try {
       // Make a POST request to the backend API using Axios
-      const response = await axios.post("/api/adduser", {
-        email: email,
-        password: password,
-        name: name,
-      });
+      let userData={
+        "email": email,
+        "password": password,
+        "name": name}
+      const response = axios.post("/api/adduser",userData );
 
       console.log(response.data);
     } catch (error) {
       console.error(error);
     }
+    await signupHandler();
+
   };
 
-  return (
-    <>
-      <div className="auth">
-        <Form className="signform" onSubmit={handleSubmit}>
-          <Form.Group controlId="name">
-            <Form.Label>Full Name</Form.Label>
-            <Form.Control
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Full Name"
-              isInvalid={errors.name}
-            />
-          </Form.Group>
+  async function signupHandler() {
+    let url = `${process.env.REACT_APP_SERVER_URL}/getUser`;
+    let data = {
+      email: email,
+      password: password,
+      username: name
+    };
+    console.log(url);
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const receivedData = await response.json();
+    if (response.status === 200) {
+      navigate("/getUser");
+    } else if (response.status === 200) {
+      alert("some thing errot try later");
+    }
+  }
+useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    if (storedData) {
+      navigate("/", { replace: true });
+    }
+  }, []);
 
-          <Form.Group controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              isInvalid={errors.email}
-            />
-          </Form.Group>
 
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              isInvalid={errors.password}
-            />
-          </Form.Group>
 
-          <Button variant="primary" className="submit" type="submit">
-            Sign up
-          </Button>
-        </Form>
+return (
+  <>
+    <div className="auth">
+      <Form className="signform" onSubmit={handleSubmit}>
+        <Form.Group controlId="name">
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Full Name"
+            isInvalid={errors.name}
+          />
+        </Form.Group>
 
-        <Nav>
+        <Form.Group controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            isInvalid={errors.email}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            isInvalid={errors.password}
+          />
+        </Form.Group>
+
+        <Button variant="primary" className="submit" type="submit">
+          Sign up
+        </Button>
+      </Form>
+
+      <Nav>
 
         <Nav.Link href="/signin" id="signin">
-        Already have an account? Sign in
+          Already have an account? Sign in
         </Nav.Link>
       </Nav>
-        
-      </div>
-    </>
-  );
+
+    </div>
+  </>
+);
 }

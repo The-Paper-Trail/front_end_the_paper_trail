@@ -17,10 +17,10 @@ export default function Signin(props) {
     console.log(email);
     console.log(password);
 
-    await addToFavHandler();
+    await signInHandler();
   };
 
-  async function addToFavHandler() {
+  async function signInHandler() {
     let url = `${process.env.REACT_APP_SERVER_URL}/getUser`;
 
     let data = {
