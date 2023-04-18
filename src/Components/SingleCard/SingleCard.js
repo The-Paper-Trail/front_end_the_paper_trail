@@ -1,5 +1,7 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import "./SingleCard.css";
 import { useNavigate } from "react-router-dom";
 
 
@@ -31,16 +33,17 @@ export default function SingleCard(props) {
 
   return (
     <>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={props.books.book_image} />
-        <Card.Body>
-          <Card.Title>{props.books.title}</Card.Title>
-          <Card.Text>{props.books.description}</Card.Text>
-          <Button variant="primary" onClick={() => showBook()}>SHOW</Button>
-          <Button variant="primary" onClick={(e) => addToFavorite(e)}>ADD TO FAV</Button>
-        </Card.Body>
-      </Card>
-
+      <div id="card">
+        <Card id="singlecard" style={{ width: '18rem' }}>
+          <Card.Body id="cardbody">
+            <Card.Title id="card-title">{props.books.title}</Card.Title>
+            <Card.Text id="card-description">{props.books.description}</Card.Text>
+            <Button id="card-add-to-fav-button" variant="primary" onClick={(e) => addToFavorite(e)}>&#x2665;</Button>
+            <Button id="card-show-button" variant="primary" onClick={() => showBook()}>SHOW</Button>
+          </Card.Body>
+          <Card.Img variant="top" src={props.books.book_image} id="card-image" />
+        </Card>
+      </div>
     </>
   );
 }

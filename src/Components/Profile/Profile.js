@@ -121,10 +121,9 @@ const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id
                 <Modal.Footer>
                 </Modal.Footer>
             </Modal>
-            <Footer />
+         
         </>
     );
 }
 
 export default Profile;
-
