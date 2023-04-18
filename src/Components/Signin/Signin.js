@@ -8,15 +8,12 @@ import Form from "react-bootstrap/Form";
 export default function Signin(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [userName, setUserName] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
-    // console.log(userName);
+ 
 
     await addToFavHandler();
   };
@@ -27,7 +24,6 @@ export default function Signin(props) {
     let data = {
       email: email,
       password: password,
-      // userName: userName,
     };
     const response = await fetch(url, {
       method: "POST",
@@ -40,7 +36,6 @@ export default function Signin(props) {
     const receivedData = await response.json();
 
     if (response.status === 202) {
-      console.log(receivedData);
       const userData = receivedData[0];
       localStorage.setItem("userData", JSON.stringify(userData));
       navigate("/");
