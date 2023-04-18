@@ -7,7 +7,20 @@ export default function FavCard(props) {
     const navigate = useNavigate();
 
     async function deleteFromFavHandler() {
-        console.log("hello world");
+        let url = `${process.env.REACT_APP_SERVER_URL}/removeFromFavorit`;
+        const userInfo = JSON.parse(localStorage.getItem("userData"));
+        const addFavData = {
+            "email": userInfo.email,
+            "bookID": props.books.bookID
+        }
+        const response = await fetch(url, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(addFavData),
+        })
+        alert(`the book ${props.books.title} was removed from the list`);
         props.getFavoriteListHandler();
     }
 
@@ -22,7 +35,7 @@ export default function FavCard(props) {
                 <Card.Body>
                     <Card.Title>{props.books.title}</Card.Title>
                     <Card.Text>{props.books.description}</Card.Text>
-                    <Button variant="primary" onClick={()=>showBook()}>SHOW</Button>
+                    <Button variant="primary" onClick={() => showBook()}>SHOW</Button>
                     <Button variant="primary" onClick={() => deleteFromFavHandler()}>REMOVE</Button>
                 </Card.Body>
             </Card>
