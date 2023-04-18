@@ -18,7 +18,6 @@ export default function NavBar() {
 
   return (
     <>
-      {console.log(storedData)}
       {storedData ? (
         <>
           {" "}

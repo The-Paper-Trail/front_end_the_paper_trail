@@ -1,8 +1,8 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import "./SingleCard.css";
 import { useNavigate } from "react-router-dom";
+
 
 
 export default function SingleCard(props) {
@@ -28,7 +28,13 @@ export default function SingleCard(props) {
       body: JSON.stringify(addFavData),
     })
     const listData = await response.json();
-    console.log(listData);
+    if (listData.message == "already in the list") {
+      alert(`the book ${props.books.title} is already in the list`);
+    }
+    else {
+      alert(`the book ${props.books.title} has been added to favorit`);
+    }
+
   }
 
   return (
@@ -38,12 +44,14 @@ export default function SingleCard(props) {
           <Card.Body id="cardbody">
             <Card.Title id="card-title">{props.books.title}</Card.Title>
             <Card.Text id="card-description">{props.books.description}</Card.Text>
-            <Button id="card-add-to-fav-button" variant="primary" onClick={(e) => addToFavorite(e)}>&#x2665;</Button>
+            <Button id="card-add-to-fav-button" variant="primary" onClick={(e) => { addToFavorite(e) }}>&#x2665;</Button>
             <Button id="card-show-button" variant="primary" onClick={() => showBook()}>SHOW</Button>
           </Card.Body>
           <Card.Img variant="top" src={props.books.book_image} id="card-image" />
         </Card>
+
       </div>
+
     </>
   );
 }
