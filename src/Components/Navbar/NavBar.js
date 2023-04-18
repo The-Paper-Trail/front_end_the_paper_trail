@@ -20,33 +20,40 @@ export default function NavBar() {
     <>
       {console.log(storedData)}
       {storedData ? (
-        <> <Nav>
-      
-        <div id="navbar">
-          <Nav.Link href="/">Home</Nav.Link>
-          
-          <Nav.Link href="/favpage">Favorite </Nav.Link>
-          <Nav.Link href="/profile">Profile</Nav.Link>
-        <Button variant="danger" onClick={() => handlesignout()}>sign out</Button>{' '}
-        </div>
-        
-      </Nav></>
+        <>
+          {" "}
+          <Nav>
+            <div id="navbar">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/favpage">Favorite </Nav.Link>
+              <Nav.Link href="/profile">Profile</Nav.Link>
+
+            <Button id="signout" variant="danger" onClick={() => handlesignout()}>
+                sign out
+              </Button>{" "}
+               </div>
+          </Nav>
+        </>
       ) : (
-        <> <Nav>
-      
-        <div id="navbar">
-          <Nav.Link href="/">Home</Nav.Link>
-          
-          <Nav.Link href="/favpage">Favorite </Nav.Link>
-          <Nav.Link href="/profile">Profile</Nav.Link>
-        <Nav.Link href="/signin" id="signin">
-         Sign In
-       </Nav.Link>
-        </div>
-       
-      </Nav></>
+        <>
+          {" "}
+          <Nav>
+
+            <div id="navbar">
+              <Nav.Link id="homenav" href="/">Home</Nav.Link>
+
+              <Nav.Link id="favnav" href="/favpage">Favorite </Nav.Link>
+              <Nav.Link id="profilenav" href="/profile">Profile</Nav.Link>
+              <div id="in">
+<Nav.Link href="/signin" id="signin">
+                Sign In
+              </Nav.Link>
+              </div>
+
+            </div>
+          </Nav>
+        </>
       )}
     </>
-   
   );
 }

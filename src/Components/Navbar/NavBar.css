@@ -1,28 +1,88 @@
-#navbar{
-margin-top :100px;
-margin-left: 530px;
-display: flex;
-
+#navbar {
+  margin-top: 90px;
+  margin-left: 35%;
+  display: flex;
+  justify-content: center;
+  color: white;
 }
 
-
-a{
+a {
   margin-right: 1rem;
-
+  color: white;
 }
 
-#inup{
-display: flex;
-margin-top :100px;
-margin-left: 270px;
-}
-#signup{
-  background-color: rgb(247, 247, 247);
+#signin {
+  background-color: rgba(255, 255, 255, 0.966);
+  color: rgb(82, 46, 14);
   border-radius: 5px;
-  color:black;
-
+  display: flex;
+  margin-left: 550px;
+  margin-top: -68px;
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-#signin{
-  background-color: rgb(247, 247, 247);
-  border-radius: 5px;
+
+#signin:hover {
+  background-color: rgba(82, 46, 14, 0.801);
+  color: aliceblue;
+}
+
+/* #in {
+
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+
+  margin-right: 10%;
+} */
+
+/* Media query for screens with maximum width of 600px */
+@media (max-width: 600px) {
+  #navbar {
+    margin-top: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  #signin {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+  }
+}
+
+/* Media query for screens with maximum width of 768px */
+@media (max-width: 768px) {
+  #navbar {
+    margin-top: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  #signin {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10px;
+  }
+}
+
+#homenav,
+#favnav,
+#profilenav {
+  color: rgb(165, 222, 235);
+  font-family: Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+#homenav:hover,
+#favnav:hover,
+#profilenav:hover {
+  color: white;
+}
+
+#signout{
+border-radius: 5px;
+  display: flex;
+  margin-left: 550px;
+  margin-top: -68px;
+height: 45px;
+font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
