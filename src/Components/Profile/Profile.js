@@ -12,10 +12,10 @@ function Profile() {
 
     var storedData = JSON.parse(localStorage.getItem("userData"));
     const storedDescription = storedData ? storedData.discription : '';
-  const storedEmail= storedData ? storedData.email : '';
-  const storedpassword= storedData ? storedData.password : '';
-  const storedImage = storedData ? storedData.url_img : '';
-  const storedUsername = storedData ? storedData.username : '';
+    const storedEmail = storedData ? storedData.email : '';
+    const storedpassword = storedData ? storedData.password : '';
+    const storedImage = storedData ? storedData.url_img : '';
+    const storedUsername = storedData ? storedData.username : '';
 
     const [showModal, setShowModal] = useState(false);
     const [description, setDescription] = useState(storedDescription);
@@ -27,10 +27,9 @@ function Profile() {
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
     const handleDescriptionChange = (e) => setDescription(e.target.value);
-    const handleImageChange = (e) => {
-        setImage(e.target.value);
-        // console.log("44", image);
-    }
+    const handleImageChange = (e) => {setImage(e.target.value);
+        
+}
 
 
 
@@ -39,38 +38,42 @@ function Profile() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let image = e.target.image.value;
-        let discription = e.target.discription.value;
+        let image = e.target.image.value == "" ?"https://image.freepik.com/free-vector/man-reading-book-with-big-books-around-white-background-colorful-isometric_18591-62675.jpg":e.target.image.value;
+        let discription = e.target.discription.value== "" ?"There is no description" :e.target.discription.value;
         setImage(image)
         setDescription(discription)
-        const storedImage = storedData ? storedData.url_img : '';
-        const storedUsername = storedData ? storedData.username : '';
-
+       
         localStorage.removeItem("userData");
         let data = {
             discription: discription,
-            email:storedEmail,
-            password:storedpassword,
+            email: storedEmail,
+            password: storedpassword,
             url_img: image,
-            username:storedUsername
+            username: storedUsername,
         }
+        localStorage.setItem("userData", JSON.stringify(data));
+        let data2={
+            email: storedData.email,
+            discription: discription,
+            url_img: image,
+        }
+        console.log(storedEmail);
+
         let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${storedEmail}`;
 
-          const response = await fetch(url, {
+        const response = await fetch(url, {
             method: "PUT",
             headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-      
-           await response.json();
-      
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data2),
+            });
+
+        await response.json();
 
 
 
 
-        localStorage.setItem("userData", JSON.stringify(data));
 
     };
     useEffect(() => {
@@ -80,17 +83,10 @@ function Profile() {
         if (storedData) {
             const profileForm = document.querySelector(".profile")
             profileForm.scrollIntoView({ behavior: "smooth", block: "start" })
-            if (storedData.url_img) {
+        
+            } 
 
-                setImage(storedData.url_img);
-                setDescription(storedData.discription)
-            } else {
-
-                setImage(storedData[0].url_img);
-                setDescription(storedData[0].discription)
-            }
-           
-        } else {
+         else {
             navigate("/", { replace: true });
         }
     }, []);
@@ -98,10 +94,9 @@ function Profile() {
 
     async function updateUserHandler() {
 
-      
+
     }
 
-    console.log("image", { image });
     return (
         <>
 
@@ -143,7 +138,6 @@ function Profile() {
                 <Modal.Footer>
                 </Modal.Footer>
             </Modal>
-            <Footer />
         </>
     );
 }
