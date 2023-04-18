@@ -1,16 +1,16 @@
 import Cards from '../Cards/Cards'
-import{ useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import "./Home.css";
 
 
-export default function Home (){
+export default function Home() {
 
-    const [books,setBooks]=useState([]);
+    const [books, setBooks] = useState([]);
 
-    async function getBooks(){
+    async function getBooks() {
 
 
-        const url=process.env.REACT_APP_SERVER_URL;
+        const url = process.env.REACT_APP_SERVER_URL;
         const response = await fetch(`${url}/getbooks`);
         const booksData = await response.json();
 
@@ -18,18 +18,15 @@ export default function Home (){
         setBooks(booksData);
 
     }
-    useEffect(()=>{
+    useEffect(() => {
         getBooks();
     },[])
     return(
         <>
-        <div id="home">
+            <div id="home">
 
-<h1 id="booksheader">Books</h1>
-<div id="homeline"></div>
-        <Cards id="bookscard"   books={books} />
+        {/* <Footer/> */}
 
-        </div>
 
         </>
     )
