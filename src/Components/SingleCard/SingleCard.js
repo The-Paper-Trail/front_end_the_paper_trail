@@ -38,16 +38,24 @@ export default function SingleCard(props) {
             <Card.Text id="card-description">
               {props.books.description}
             </Card.Text>
-           < Button variant="primary" id="card-add-to-fav-button">
+            <Button
+              variant="primary"
+              id="card-add-to-fav-button"
+              onClick={(e) => addToFavorite(e)}
+            >
               &#x2665;
             </Button>
 
-           <Button id="card-show-button" variant="primary" onClick={() => showBook()}>SHOW</Button>
-              {/* <Button variant="primary" >
+            <Button
+              id="card-show-button"
+              variant="primary"
+              onClick={() => showBook()}
+            >
+              SHOW
+            </Button>
+            {/* <Button variant="primary" >
                 SHOW
               </Button> */}
-  
-
           </Card.Body>
           <Card.Img
             id="card-image"
