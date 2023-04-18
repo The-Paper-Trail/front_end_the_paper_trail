@@ -23,11 +23,7 @@ export default function Home (){
     },[])  
     return(
         <>
-        {/* <Navbar /> */}
         <Cards    books={books} />
-        {/* <Footer/> */}
-       
-      
         </>
     )
 }
