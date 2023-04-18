@@ -76,6 +76,9 @@ useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
       navigate("/", { replace: true });
+    }else{
+      const signForm = document.querySelector(".signform")
+      signForm.scrollIntoView({ behavior: "smooth", block: "start" })      
     }
   }, []);
 

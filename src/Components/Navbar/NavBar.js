@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
 import { Nav } from "react-bootstrap";
 import "./NavBar.css"
-import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
 
 // import { useState } from "react";
 
 export default function NavBar() {
-  const navigate = useNavigate();
   const storedData = JSON.parse(localStorage.getItem("userData"));
   function handlesignout() {
     localStorage.removeItem("userData");
