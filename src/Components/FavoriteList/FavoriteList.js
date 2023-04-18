@@ -22,7 +22,7 @@ export default function Favorite() {
         <>
         {
             books.map(book =>{
-                return <FavCard books={book} />
+                return <FavCard books={book} getFavoriteListHandler={getFavoriteListHandler}/>
             })
         }
         </>
