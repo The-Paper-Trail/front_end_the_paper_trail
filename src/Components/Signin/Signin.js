@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Nav } from "react-bootstrap";
-import Home from "../Home/Home";
 import { useNavigate } from "react-router-dom";
-import "../Signup/Signup.css";
+import "./Signin.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export default function Signin(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [userName, setUserName] = useState("");
 
   const navigate = useNavigate();
 
@@ -16,6 +16,7 @@ export default function Signin(props) {
     e.preventDefault();
     console.log(email);
     console.log(password);
+    // console.log(userName);
 
     await addToFavHandler();
   };
@@ -26,6 +27,7 @@ export default function Signin(props) {
     let data = {
       email: email,
       password: password,
+      // userName: userName,
     };
     const response = await fetch(url, {
       method: "POST",
@@ -55,37 +57,58 @@ export default function Signin(props) {
   }, []);
 
   return (
-    <div>
-      <div className="auth">
-        <Form className="signform" onSubmit={handleSubmit}>
-          <Form.Group controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-            />
-          </Form.Group>
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-            />
-          </Form.Group>
-          <Button variant="primary" className="submit" type="submit">
-            Sign In
-          </Button>
-        </Form>
-        <Nav>
-          <Nav.Link href="/signup" id="signup">
-            Don't have an account? Sign up
-          </Nav.Link>
-        </Nav>
+    <>
+      <div id="signinpage">
+        <div id="story">
+          <h1 id="story1">Sign in</h1>
+          <p id="story2">and Keep the story going..</p>
+        </div>
+
+        <div className="auth">
+          <Form className="signform" onSubmit={handleSubmit}>
+            {/* <Form.Group controlId="userName">
+              <Form.Label>User Name</Form.Label>
+              <Form.Control
+                type="text"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                placeholder="User Name"
+              />
+            </Form.Group> */}
+            <Form.Group controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+              />
+            </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              id="submit"
+              className="submit"
+              type="submit"
+            >
+              Sign In
+            </Button>
+          </Form>
+          <Nav>
+            <Nav.Link href="/signup" id="signup">
+              Don't have an account? Sign up
+            </Nav.Link>
+          </Nav>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

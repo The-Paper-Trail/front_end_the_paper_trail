@@ -1,0 +1,100 @@
+
+#card {
+  display: flex;
+  align-items: center;
+  width:100%px;
+  background-image: linear-gradient(rgb(44, 26, 13),
+rgba(51, 40, 20, 0.774),  rgba(98, 184, 134, 0.253));
+  border-radius: 20px;
+  /* padding:10px; */
+  box-shadow: 0px 9px 9px rgba(44, 27, 7, 0.973);
+  position: relative;
+}
+
+#singlecard {
+
+  display: inline-block;
+  background-color: rgba(240, 248, 255, 0);
+  width: 700px;
+}
+
+#card-image {
+  /* background-color: red; */
+  width: 230px;
+  height: 350px;
+  /* flex-shrink: 0; */
+  /* display: inline-block; */
+margin-top: -120%;
+margin-left: 100%;
+
+}
+
+@media screen and (max-width: 768px) {
+  #card-image {
+    margin-top: 0; 
+    margin-left: auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  #card-image {
+    margin-top: 0;
+    margin-left: auto;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+
+
+
+#card-title {
+  font-size: 1.1rem;
+  color:white;
+  max-height:60px;
+}
+
+#card-description {
+  margin-top: 0.5rem;
+  max-height: 10px;
+color:rgba(255, 255, 255, 0.753);
+  }
+
+#card-show-button,
+#card-add-to-fav-button {
+
+position:absolute;
+/* transform: translateY(-10%); */
+/* background-image: url("../../../assesst/icon.png"); */
+}
+#card-add-to-fav-button {
+background-color: rgba(255, 255, 255, 0);
+border-radius: 100%p;
+color: rgb(168, 52, 52);
+font-size: 50px;
+border-color: rgba(255, 255, 255, 0);
+margin-top: 190px;
+margin-left: 160px;
+
+}
+#card-add-to-fav-button:hover{
+color:rgb(228, 50, 50);
+}
+
+#card-show-button{
+width: 150px;
+
+  background-color: rgba(70, 144, 146, 0.836);
+  color: white;
+border-color:rgba(245, 222, 179, 0);
+margin-top: 220px;
+}
+#card-show-button:hover{
+background-color: rgba(250, 235, 215, 0.534);
+color:black;
+}
+
+#cardbody{
+  width:100%;
+  height: 350px;
+}

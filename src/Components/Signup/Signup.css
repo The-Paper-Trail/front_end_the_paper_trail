@@ -1,11 +1,14 @@
 
-.auth,.signform{
+
+
+
+/* .auth,.signform{
 display: flex;
 flex-direction: column;
-background-color: rgb(114, 20, 98);
+ background-image: url('../../../assesst/bksign.jpg');
 width: 300px;
-height: 500px;
-/* align-items: center; */
+height: 500px; */
+/* align-items: center;
 justify-content: center;
 color:black;
 text-align: left;
@@ -35,7 +38,7 @@ border: none;
 padding: 10px;
 border-radius: 13px;
 cursor: pointer;
-color: blueviolet;
+color: rgb(84, 0, 163);
 
 
 }
@@ -45,5 +48,6 @@ color: blueviolet;
     border: none;
     text-decoration: underline;
     margin-top:-66px;
-    
+
 }
+*/
