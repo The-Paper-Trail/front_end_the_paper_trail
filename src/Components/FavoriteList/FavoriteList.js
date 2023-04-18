@@ -22,17 +22,31 @@ export default function Favorite() {
         const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
         getFavoriteListHandler();
+        const firstElement = document.querySelector(".firstElement")
+        firstElement.scrollIntoView({ behavior: "smooth", block: "start" })
     }else{
         navigate("/", { replace: true });
     }
     }, []);
+    books.map(book =>{
+        return <FavCard books={book} getFavoriteListHandler={getFavoriteListHandler}/>
+    })
     return (
+        <div className="firstElement">
+              {books ? (
         <>
-        {
+          {" "}
+          {
             books.map(book =>{
                 return <FavCard books={book} getFavoriteListHandler={getFavoriteListHandler}/>
             })
-        }
+          }
         </>
+      ) : (
+        <>
+          <p>there is no books in your Favorite list</p>
+        </>
+      )}
+        </div>
     )
 }
