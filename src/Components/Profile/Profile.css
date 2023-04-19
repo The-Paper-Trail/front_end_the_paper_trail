@@ -1,94 +1,96 @@
 .description-box {
-    border-top: 1px solid #0000001f;
-    margin-left:147Px;
-    border-radius: 3px;
-    /* box-shadow: 0 4px 5px rgba(0, 0, 0, 0.363); */
-    background-color: rgba(69, 95, 112, 0);
-width: 200px;
-margin-top: 10px;
+  border-top: 1px solid #0000001f;
+  margin-left: 147Px;
+  border-radius: 3px;
+  /* box-shadow: 0 4px 5px rgba(0, 0, 0, 0.363); */
+  background-color: rgba(69, 95, 112, 0);
+  width: 200px;
+  margin-top: 10px;
 
-  }
-h6{
-margin-left: 140px;
-padding-top: 10px;
-color: #0a050560;
+}
+
+h6 {
+  margin-left: 140px;
+  padding-top: 10px;
+  color: #0a050560;
 
 
 }
-  .description-box h2 {
-    font-size: 20px;
-    font-weight: bold;
 
-  }
+.description-box h2 {
+  font-size: 20px;
+  font-weight: bold;
 
-  .description-box p {
-    font-size: 16px;
-    margin: 0;
-  }
-  #proheader{
-    color: rgb(0, 0, 0);
-    background-image: linear-gradient(90deg,rgba(124, 115, 96, 0.13)
-    ,rgba(255, 255, 255, 0.418)
-    ,rgba(255, 255, 255, 0));
-   height:50px;
-   border-radius: 10px;
-   padding-left: 10px;
-   padding-top: 28px;
-   margin-left: 0px;
-   margin-top: 0px;
-  }
+}
 
-  #userimg{
-width: 270px;
-height: 270px;
-border-radius: 50%;
-border:solid;
-color:red;
-border-color: #c9a46c4b;
-box-shadow: #a93b3b;
-background-color: rgba(54, 22, 22, 0);
-margin-left: 100px;
-margin-top: 110px;
-  }
+.description-box p {
+  font-size: 16px;
+  margin: 0;
+}
 
-  #propage{
-background-image: url(../../../assesst/1.jpeg);
-    /* opacity: 0; */
-    background-repeat: no-repeat;
+#proheader {
+  color: rgb(0, 0, 0);
+  background-image: linear-gradient(90deg, rgba(124, 115, 96, 0.13), rgba(255, 255, 255, 0.418), rgba(255, 255, 255, 0));
+  height: 50px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-top: 28px;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+#userimg {
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  border: solid;
+  color: red;
+  border-color: #c9a46c4b;
+  box-shadow: #a93b3b;
+  background-color: rgba(54, 22, 22, 0);
+  margin-left: 100px;
+  margin-top: 110px;
+}
+
+#propage {
+  background-image: url(../../../assesst/1.jpeg);
+  /* opacity: 0; */
+  background-repeat: no-repeat;
   background-size: cover;
   margin-top: 10px;
 
 
-  }
-#profile1{
-   margin:0px 0px;
-   background-image: url("../../../assesst/2.jpg");
-     background-repeat: no-repeat;
-  background-size: cover;
-   border-radius: 15px;
-   padding: 20px;
-   width: 100%px;
-   height: 900px;
-opacity: 0.9;
- box-shadow: 5px 4px 5px rgb(211, 211, 211);
- margin: 30px 30px;
 }
-#username{
-background-color: rgba(243, 36, 70, 0);
-width: 300px;
+
+#profile1 {
+  margin: 0px 0px;
+  background-image: url("../../../assesst/2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%px;
+  height: 900px;
+  opacity: 0.9;
+  box-shadow: 5px 4px 5px rgb(211, 211, 211);
+  margin: 30px 30px;
+}
+
+#username {
+  background-color: rgba(243, 36, 70, 0);
+  width: 300px;
 
   /* display: inline-block; */
   padding: 10px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: #2b2417;
   font-size: 35px;
-  margin-left :130px;
+  margin-left: 130px;
 
 }
 
 #proline {
-  background-image: linear-gradient(
-    rgba(134, 120, 103, 0.685), rgb(75, 61, 61), rgba(223, 222, 222, 0.055));
+  background-image: linear-gradient(rgba(134, 120, 103, 0.685), rgb(75, 61, 61), rgba(223, 222, 222, 0.055));
   height: 400px;
   width: 0.1rem;
   position: relative;
@@ -108,19 +110,21 @@ width: 300px;
   0% {
     background-size: 100% 0%;
   }
+
   50% {
     background-size: 100% 100%;
   }
+
   100% {
     background-size: 100% 0%;
   }
 }
 
 
-#update{
+#update {
   margin-left: 380px;
   margin-top: -755px;
   background-color: rgb(211, 211, 211);
   border-color: azure;
-  margin-right:5px;
+  margin-right: 5px;
 }
