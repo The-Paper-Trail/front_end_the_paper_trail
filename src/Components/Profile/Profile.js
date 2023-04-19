@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './Profile.css';
-import Footer from "../Footer/Footer";
 import { useRef } from 'react';
 
 
@@ -38,8 +37,8 @@ function Profile() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let image = e.target.image.value == "" ?"https://image.freepik.com/free-vector/man-reading-book-with-big-books-around-white-background-colorful-isometric_18591-62675.jpg":e.target.image.value;
-        let discription = e.target.discription.value== "" ?"There is no description" :e.target.discription.value;
+        let image = e.target.image.value == "" ?storedImage : e.target.image.value;
+        let discription = e.target.discription.value== "" ?storedDescription :e.target.discription.value;
         setImage(image)
         setDescription(discription)
        

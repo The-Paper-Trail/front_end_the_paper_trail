@@ -39,6 +39,8 @@ export default function Signin(props) {
       const userData = receivedData[0];
       localStorage.setItem("userData", JSON.stringify(userData));
       navigate("/");
+      window.location.reload();
+
     } else if (response.status === 200) {
       alert("check email or password");
     }
@@ -48,6 +50,7 @@ export default function Signin(props) {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
       navigate("/", { replace: true });
+      
     }else{
       const signForm = document.querySelector(".signform")
       signForm.scrollIntoView({ behavior: "smooth", block: "start" })      
