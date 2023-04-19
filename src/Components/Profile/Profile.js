@@ -96,25 +96,21 @@ function Profile() {
 
     }
 
-
-
     return (
-      <>
-        <div id="propage">
-          <br />
-          <div id="profile1">
-            <img id="userimg" src={storedImage} alt="Profile image" />
-            <h3 id="username">{storedUsername}</h3>
-            <h6> ✩ Description of my content</h6>
+        <>
+
+            <h1 className="profile">Profile</h1>
+            <h3>{storedUsername}</h3>
+            <img src={image} alt="Profile image" />
             <div class="description-box">
-              {/* <p>This is the description of my content.</p> */}
-              <p>{storedDescription}</p>
+                <h2>Description</h2>
+                <p>{description}</p>
             </div>
 
-            <Button id="update" variant="primary" onClick={handleShowModal}>
-              ✏
+            <Button variant="primary" onClick={handleShowModal}>
+                Update
             </Button>
-            <div id="proline"></div>
+
             <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Update</Modal.Title>
@@ -141,9 +137,6 @@ function Profile() {
                 <Modal.Footer>
                 </Modal.Footer>
             </Modal>
-            </div>
-          <br />
-        </div>
         </>
     );
 }
