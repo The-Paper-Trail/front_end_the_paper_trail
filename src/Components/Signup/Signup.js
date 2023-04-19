@@ -39,7 +39,7 @@ export default function Signup(props) {
       return;
     }
 
-   
+
     await signupHandler();
 
   };
@@ -58,82 +58,82 @@ export default function Signup(props) {
       },
       body: JSON.stringify(data),
     });
-     await response.json();
+    await response.json();
     if (response.status === 201) {
       navigate("/signin");
-      
 
-      alert( "Your account has been successfully created.");
+
+      alert("Your account has been successfully created.");
     } else if (response.status === 200) {
       alert("your email is allready exsest");
 
     }
-    else{
-      alert( "Sorry, we were unable to create your account at this time. Please try again later.");
+    else {
+      alert("Sorry, we were unable to create your account at this time. Please try again later.");
     }
   }
-useEffect(() => {
+  useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
       navigate("/", { replace: true });
-    }else{
+    } else {
       const signForm = document.querySelector(".signform")
-      signForm.scrollIntoView({ behavior: "smooth", block: "start" })      
+      signForm.scrollIntoView({ behavior: "smooth", block: "start" })
     }
   }, []);
 
 
 
-return (
-  <>
-    <div className="auth">
-      <Form className="signform" onSubmit={handleSubmit}>
-        <Form.Group controlId="name">
-          <Form.Label>Full Name</Form.Label>
-          <Form.Control
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Full Name"
-            isInvalid={errors.name}
-          />
-        </Form.Group>
+  return (
+    <>
+      <div className="auth">
+        <Form className="signform" onSubmit={handleSubmit}>
+          <Form.Group controlId="name">
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Full Name"
+              isInvalid={errors.name}
+            />
+          </Form.Group>
 
-        <Form.Group controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            isInvalid={errors.email}
-          />
-        </Form.Group>
+          <Form.Group controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              isInvalid={errors.email}
+            />
+          </Form.Group>
 
-        <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            isInvalid={errors.password}
-          />
-        </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              isInvalid={errors.password}
+            />
+          </Form.Group>
 
-        <Button variant="primary" className="submit" type="submit">
-          Sign up
-        </Button>
-      </Form>
+          <Button variant="primary" className="submit" type="submit">
+            Sign up
+          </Button>
+        </Form>
 
-      <Nav>
+        <Nav>
 
-        <Nav.Link href="/signin" id="signin">
-          Already have an account? Sign in
-        </Nav.Link>
-      </Nav>
+          <Nav.Link href="/signin" id="signin">
+            Already have an account? Sign in
+          </Nav.Link>
+        </Nav>
 
-    </div>
-  </>
-);
+      </div>
+    </>
+  );
 }

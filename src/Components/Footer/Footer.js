@@ -13,8 +13,8 @@ export default function Footer() {
         Email:{" "}
         <a href="mailto:info@peakperformers.com">info@peakperformers.com</a>
       </p>
-<div id="linefoot"></div>
-  <p>&copy; 2023 Peak Performers. All rights reserved.</p>
+      <div id="linefoot"></div>
+      <p>&copy; 2023 Peak Performers. All rights reserved.</p>
 
     </footer>
   );

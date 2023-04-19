@@ -13,7 +13,7 @@ export default function Signin(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
- 
+
 
     await addToFavHandler();
   };
@@ -50,12 +50,12 @@ export default function Signin(props) {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
       navigate("/", { replace: true });
-      
-    }else{
+
+    } else {
       const signForm = document.querySelector(".signform")
-      signForm.scrollIntoView({ behavior: "smooth", block: "start" })      
+      signForm.scrollIntoView({ behavior: "smooth", block: "start" })
     }
- 
+
 
   }, []);
 
