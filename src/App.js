@@ -27,7 +27,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="//favpage" element={<FavPage />} />
+          <Route path="/favpage" element={<FavPage />} />
         </Routes>
         <Footer/>
       </div>
