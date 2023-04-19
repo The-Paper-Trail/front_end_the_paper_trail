@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 // import Dropdown from 'react-bootstrap/Dropdown';
 import { Dropdown } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
-import "./Details.css";
 
 
 
@@ -36,44 +35,43 @@ export default function Details(props) {
     return (
 
         <>
-   
-        {
-            
-        books.map(books => {
-            // console.log(books.bookID  , id);
-            if (books.bookID == id) {
-                return (<div id = "divv">
-                    <Card id = "card">
-                    <Card.Img id = "image" variant="top" src={books.book_image} />
-                       <Card.Body id = "bod">
-                         <Card.Title id = "tit">{books.title}</Card.Title>
-                         <Card.Text id = "tex">Author : {books.author}.</Card.Text>
-                         <Card.Text id = "tex">Description about the book : <br></br>{books.description}</Card.Text>
-                         <Card.Text id = "tex">Publisher : {books.publisher}.</Card.Text>
-                         <Card.Text id = "tex">Contribution {books.contributor}.</Card.Text>
-                         <Card.Text id = "tex">Are you thinking of buying it?</Card.Text>
-                         <Card.Text id = "tex">Choose site to buy from :</Card.Text>
-                         <Dropdown id = "drop"title="Buy">
-                                <Dropdown.Item as="a" target="_blank" href={books.amazon_link}>
-                                 Amazon
-                                </Dropdown.Item>
-                  
-                                <Dropdown.Item as="a" target="_blank" href={books.apple_books_link}>
-                                Apple Books
-                                </Dropdown.Item>
-                  
-                                <Dropdown.Item as="a" target="_blank" href={books.barnes_and_noble_link}>
-                                Barnes and Noble
-                                </Dropdown.Item>
-                            </Dropdown>  
-                       </Card.Body>
-                     </Card>
-                </div>
-                )
-              }
- 
-        })
-    }
+
+            {
+
+                books.map(books => {
+                    // console.log(books.bookID  , id);
+                    if (books.bookID == id) {
+                        return (
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Img variant="top" src={books.book_image} />
+                                <Card.Body>
+                                    <Card.Title>{books.title}</Card.Title>
+                                    <Card.Text>Author : {books.author}</Card.Text>
+                                    <Card.Text>Description about the book : <br></br>{books.description}</Card.Text>
+                                    <Card.Text>Publisher : {books.publisher}</Card.Text>
+                                    <Card.Text>Contribution {books.contributor}</Card.Text>
+                                    <Card.Text>Are you thinking of buying it?</Card.Text>
+                                    <Card.Text>Choose site to buy from</Card.Text>
+                                    <Dropdown title="Buy">
+                                        <Dropdown.Item as="a" href={books.amazon_link}>
+                                            Amazon
+                                        </Dropdown.Item>
+
+                                        <Dropdown.Item as="a" href={books.apple_books_link}>
+                                            Apple Books
+                                        </Dropdown.Item>
+
+                                        <Dropdown.Item as="a" href={books.barnes_and_noble_link}>
+                                            Barnes and Noble
+                                        </Dropdown.Item>
+                                    </Dropdown>
+                                </Card.Body>
+                            </Card>
+                        )
+                    }
+
+                })
+            }
         </>
 
 

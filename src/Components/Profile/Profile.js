@@ -1,34 +1,28 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './Profile.css';
-import { useRef } from 'react';
+import Footer from "../Footer/Footer";
 
 
 function Profile() {
-
-    var storedData = JSON.parse(localStorage.getItem("userData"));
-    const storedDescription = storedData ? storedData.discription : '';
-    const storedEmail = storedData ? storedData.email : '';
-    const storedpassword = storedData ? storedData.password : '';
-    const storedImage = storedData ? storedData.url_img : '';
-    const storedUsername = storedData ? storedData.username : '';
-
     const [showModal, setShowModal] = useState(false);
-    const [description, setDescription] = useState(storedDescription);
-    const [image, setImage] = useState(storedImage);
-    const discriptionRef = useRef();
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState('');
 
 
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    const storedUsername = storedData ? storedData.username : '';
+const storedDescription = storedData ? storedData.discription : '';
+const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id/OIP.scExuNqSeL_zvoAQbH0gWAAAAA?pid=ImgDet&rs=1";
 
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
     const handleDescriptionChange = (e) => setDescription(e.target.value);
-    const handleImageChange = (e) => {setImage(e.target.value);
-        
-}
+    const handleImageChange = (e) => setImage(e.target.value);
 
 
 
@@ -37,74 +31,64 @@ function Profile() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let image = e.target.image.value == "" ?storedImage : e.target.image.value;
-        let discription = e.target.discription.value== "" ?storedDescription :e.target.discription.value;
-        setImage(image)
-        setDescription(discription)
-       
-        localStorage.removeItem("userData");
-        let data = {
-            discription: discription,
-            email: storedEmail,
-            password: storedpassword,
-            url_img: image,
-            username: storedUsername,
-        }
-        localStorage.setItem("userData", JSON.stringify(data));
-        let data2={
-            email: storedData.email,
-            discription: discription,
-            url_img: image,
-        }
-        console.log(storedEmail);
 
-        let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${storedEmail}`;
-
-        const response = await fetch(url, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data2),
-            });
-
-        await response.json();
-
-
-
-
-
+        await updateUserHandler();
     };
     useEffect(() => {
 
-        var storedData = JSON.parse(localStorage.getItem("userData"));
+        const storedData = JSON.parse(localStorage.getItem("userData"));
 
-        if (storedData) {
-            const profileForm = document.querySelector(".profile")
-            profileForm.scrollIntoView({ behavior: "smooth", block: "start" })
-        
-            } 
+        if (!storedData) {
 
-         else {
             navigate("/", { replace: true });
+
+            // alert("Please sign in before entering this page")
         }
     }, []);
 
 
     async function updateUserHandler() {
+        const storedData = JSON.parse(localStorage.getItem("userData"));
+        let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${storedData.email}`;
+        let data1 = {
+            "discription": description == "" ? storedData.discription : `${description}`,
+            "url_img": image == "" ? storedData.url_img : `${image}`
+        };
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data1),
+        });
 
+        const receivedData = await response.json();
+        console.log(response);
+        console.log(receivedData);
+
+        if (response.status === 200) {
+            console.log(receivedData);
+            const userData = receivedData;
+            localStorage.setItem("userData", JSON.stringify(userData));
+            navigate("/profile");
+        } else {
+            // alert("Error updating profile.");
+        }
 
     }
 
+
+
+    // "https://th.bing.com/th/id/OIP.scExuNqSeL_zvoAQbH0gWAAAAA?pid=ImgDet&rs=1"
     return (
         <>
-
-            <h1 className="profile">Profile</h1>
+            <h1>Profile</h1>
             <h3>{storedUsername}</h3>
-            <img src={image} alt="Profile image" />
+            <img src={storedImage} alt="Profile image" />
             <div class="description-box">
                 <h2>Description</h2>
-                <p>{description}</p>
+                {/* <p>This is the description of my content.</p> */}
+                <p>{storedDescription}</p>
             </div>
 
             <Button variant="primary" onClick={handleShowModal}>
@@ -116,20 +100,20 @@ function Profile() {
                     <Modal.Title>Update</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
+                    <Form>
                         <Form.Group controlId="formDescription">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control name="discription" type="text" />
+                            <Form.Control type="text" value={description} onChange={handleDescriptionChange} />
                         </Form.Group>
 
                         <Form.Group controlId="formImage">
                             <Form.Label>Image</Form.Label>
-                            <Form.Control name="image" type="text" />
+                            <Form.Control type="text" value={image} onChange={handleImageChange} />
                         </Form.Group>
                         <Button variant="secondary" onClick={handleCloseModal}>
                             Cancel
                         </Button>
-                        <Button variant="primary" type="submit" onClick={handleCloseModal}>
+                        <Button variant="primary" onClick={handleSubmit}>
                             Save Changes
                         </Button>
                     </Form>
@@ -137,6 +121,7 @@ function Profile() {
                 <Modal.Footer>
                 </Modal.Footer>
             </Modal>
+         
         </>
     );
 }
