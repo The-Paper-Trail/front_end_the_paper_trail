@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './Profile.css';
-import { useRef } from 'react';
+// import { useRef } from 'react';
 
 
 function Profile() {
@@ -19,9 +19,7 @@ function Profile() {
     const [showModal, setShowModal] = useState(false);
     const [description, setDescription] = useState(storedDescription);
     const [image, setImage] = useState(storedImage);
-    const discriptionRef = useRef();
-
-
+    // const discriptionRef = useRef();
 
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
@@ -29,9 +27,6 @@ function Profile() {
     const handleImageChange = (e) => {setImage(e.target.value);
         
 }
-
-
-
 
     const navigate = useNavigate();
 
@@ -70,10 +65,6 @@ function Profile() {
 
         await response.json();
 
-
-
-
-
     };
     useEffect(() => {
 
@@ -82,19 +73,12 @@ function Profile() {
         if (storedData) {
             const profileForm = document.querySelector(".profile")
             profileForm.scrollIntoView({ behavior: "smooth", block: "start" })
-        
             } 
-
          else {
-            navigate("/", { replace: true });
+            navigate("/signin", { replace: true });
         }
     }, []);
-
-
-    async function updateUserHandler() {
-
-
-    }
+ 
 
     return (
         <>
@@ -106,7 +90,6 @@ function Profile() {
                 <h2>Description</h2>
                 <p>{description}</p>
             </div>
-
             <Button variant="primary" onClick={handleShowModal}>
                 Update
             </Button>
@@ -121,7 +104,6 @@ function Profile() {
                             <Form.Label>Description</Form.Label>
                             <Form.Control name="discription" type="text" />
                         </Form.Group>
-
                         <Form.Group controlId="formImage">
                             <Form.Label>Image</Form.Label>
                             <Form.Control name="image" type="text" />
