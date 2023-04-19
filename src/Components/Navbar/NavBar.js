@@ -23,6 +23,7 @@ export default function NavBar() {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/favpage">Favorite </Nav.Link>
               <Nav.Link href="/profile">Profile</Nav.Link>
+          <Nav.Link href="/about">About Us</Nav.Link>
 
               <Button id="signout" variant="danger" onClick={() => handlesignout()}>
                 sign out
@@ -40,6 +41,7 @@ export default function NavBar() {
 
               <Nav.Link id="favnav" href="/favpage">Favorite </Nav.Link>
               <Nav.Link id="profilenav" href="/profile">Profile</Nav.Link>
+          <Nav.Link href="/about">About Us</Nav.Link>
               <div id="in">
                 <Nav.Link href="/signin" id="signin">
                   Sign In
