@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './Profile.css';
-// import { useRef } from 'react';
 
 
 function Profile() {
@@ -19,7 +18,6 @@ function Profile() {
     const [showModal, setShowModal] = useState(false);
     const [description, setDescription] = useState(storedDescription);
     const [image, setImage] = useState(storedImage);
-    // const discriptionRef = useRef();
 
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
@@ -51,7 +49,6 @@ function Profile() {
             discription: discription,
             url_img: image,
         }
-        console.log(storedEmail);
 
         let url = `${process.env.REACT_APP_SERVER_URL}/updateUser/${storedEmail}`;
 
