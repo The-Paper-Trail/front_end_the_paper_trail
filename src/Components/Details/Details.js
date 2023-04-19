@@ -54,15 +54,15 @@ export default function Details(props) {
                          <Card.Text id = "tex">Are you thinking of buying it?</Card.Text>
                          <Card.Text id = "tex">Choose site to buy from :</Card.Text>
                          <Dropdown id = "drop"title="Buy">
-                                <Dropdown.Item as="a" href={books.amazon_link}>
+                                <Dropdown.Item as="a" target="_blank" href={books.amazon_link}>
                                  Amazon
                                 </Dropdown.Item>
                   
-                                <Dropdown.Item as="a" href={books.apple_books_link}>
+                                <Dropdown.Item as="a" target="_blank" href={books.apple_books_link}>
                                 Apple Books
                                 </Dropdown.Item>
                   
-                                <Dropdown.Item as="a" href={books.barnes_and_noble_link}>
+                                <Dropdown.Item as="a" target="_blank" href={books.barnes_and_noble_link}>
                                 Barnes and Noble
                                 </Dropdown.Item>
                             </Dropdown>  
