@@ -86,3 +86,24 @@ height: 45px;
 font-size: 20px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
+
+
+@media screen and (max-width: 750px) {
+  #signout {
+    margin-left: 1rem;
+    margin-top: -2rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  #signout {
+    margin-left: 1rem;
+    margin-top: -2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #signout {
+    margin-left: 1rem;
+    margin-top: -2rem;
+  }
+}

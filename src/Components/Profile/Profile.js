@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './Profile.css';
-import Footer from "../Footer/Footer";
+
 
 
 function Profile() {
@@ -77,52 +77,65 @@ const storedImage = storedData ? storedData.url_img : "https://th.bing.com/th/id
 
     }
 
-
-
     // "https://th.bing.com/th/id/OIP.scExuNqSeL_zvoAQbH0gWAAAAA?pid=ImgDet&rs=1"
+
+
     return (
-        <>
-            <h1>Profile</h1>
-            <h3>{storedUsername}</h3>
-            <img src={storedImage} alt="Profile image" />
+      <>
+        <div id="propage">
+          <br />
+          {/* <h1 id="proheader">Profile</h1> */}
+
+          <div id="profile1">
+            <img id="userimg" src={storedImage} alt="Profile image" />
+            <h3 id="username">{storedUsername}</h3>
+            <h6> ✩ Description of my content</h6>
             <div class="description-box">
-                <h2>Description</h2>
-                {/* <p>This is the description of my content.</p> */}
-                <p>{storedDescription}</p>
+              {/* <p>This is the description of my content.</p> */}
+              <p>{storedDescription}</p>
             </div>
 
-            <Button variant="primary" onClick={handleShowModal}>
-                Update
+            <Button id="update" variant="primary" onClick={handleShowModal}>
+              ✏
             </Button>
-
+            <div id="proline"></div>
             <Modal show={showModal} onHide={handleCloseModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Update</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group controlId="formDescription">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control type="text" value={description} onChange={handleDescriptionChange} />
-                        </Form.Group>
+              <Modal.Header closeButton>
+                <Modal.Title>Update</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form>
+                  <Form.Group controlId="formDescription">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={description}
+                      onChange={handleDescriptionChange}
+                    />
+                  </Form.Group>
 
-                        <Form.Group controlId="formImage">
-                            <Form.Label>Image</Form.Label>
-                            <Form.Control type="text" value={image} onChange={handleImageChange} />
-                        </Form.Group>
-                        <Button variant="secondary" onClick={handleCloseModal}>
-                            Cancel
-                        </Button>
-                        <Button variant="primary" onClick={handleSubmit}>
-                            Save Changes
-                        </Button>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                </Modal.Footer>
+                  <Form.Group controlId="formImage">
+                    <Form.Label>Image</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={image}
+                      onChange={handleImageChange}
+                    />
+                  </Form.Group>
+                  <Button variant="secondary" onClick={handleCloseModal}>
+                    Cancel
+                  </Button>
+                  <Button variant="primary" onClick={handleSubmit}>
+                    Save Changes
+                  </Button>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer></Modal.Footer>
             </Modal>
-         
-        </>
+          </div>
+          <br />
+        </div>
+      </>
     );
 }
 

@@ -42,32 +42,47 @@ export default function Details(props){
             // console.log(books.bookID  , id);
             if (books.bookID == id) {
                 return (
-                    <Card style={{ width: '18rem' }}>
+                  <Card style={{ width: "18rem" }}>
                     <Card.Img variant="top" src={books.book_image} />
-                       <Card.Body>
-                         <Card.Title>{books.title}</Card.Title>
-                         <Card.Text>Author : {books.author}</Card.Text>
-                         <Card.Text>Description about the book : <br></br>{books.description}</Card.Text>
-                         <Card.Text>Publisher : {books.publisher}</Card.Text>
-                         <Card.Text>Contribution {books.contributor}</Card.Text>
-                         <Card.Text>Are you thinking of buying it?</Card.Text>
-                         <Card.Text>Choose site to buy from</Card.Text>
-                         <Dropdown title="Buy">
-                                <Dropdown.Item as="a" href={books.amazon_link}>
-                                 Amazon
-                                </Dropdown.Item>
+                    <Card.Body>
+                      <Card.Title>{books.title}</Card.Title>
+                      <Card.Text>Author : {books.author}</Card.Text>
+                      <Card.Text>
+                        Description about the book : <br></br>
+                        {books.description}
+                      </Card.Text>
+                      <Card.Text>Publisher : {books.publisher}</Card.Text>
+                      <Card.Text>Contribution {books.contributor}</Card.Text>
+                      <Card.Text>Are you thinking of buying it?</Card.Text>
+                      <Card.Text>Choose site to buy from</Card.Text>
+                      <Dropdown title="Buy">
+                        <Dropdown.Item
+                          target="_blank"
+                          as="a"
+                          href={books.amazon_link}
+                        >
+                          Amazon
+                        </Dropdown.Item>
 
-                                <Dropdown.Item as="a" href={books.apple_books_link}>
-                                Apple Books
-                                </Dropdown.Item>
+                        <Dropdown.Item
+                          target="_blank"
+                          as="a"
+                          href={books.apple_books_link}
+                        >
+                          Apple Books
+                        </Dropdown.Item>
 
-                                <Dropdown.Item as="a" href={books.barnes_and_noble_link}>
-                                Barnes and Noble
-                                </Dropdown.Item>
-                            </Dropdown>
-                       </Card.Body>
-                     </Card>
-                )
+                        <Dropdown.Item
+                          target="_blank"
+                          as="a"
+                          href={books.barnes_and_noble_link}
+                        >
+                          Barnes and Noble
+                        </Dropdown.Item>
+                      </Dropdown>
+                    </Card.Body>
+                  </Card>
+                );
               }
 
         })

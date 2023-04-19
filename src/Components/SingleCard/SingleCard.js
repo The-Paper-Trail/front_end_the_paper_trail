@@ -30,6 +30,7 @@ export default function SingleCard(props) {
     const listData = await response.json();
     console.log(listData);
   }
+  
 
   return (
     <>

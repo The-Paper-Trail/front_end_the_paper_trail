@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import FavCard from "./FavCard/FavCard";
+import "./FavoriteList.css"
+
+
 
 export default function Favorite() {
     const [books,getBooks] = useState([]);
@@ -19,12 +22,26 @@ export default function Favorite() {
         getFavoriteListHandler();
     }, []);
     return (
-        <>
-        {
-            books.map(book =>{
-                return <FavCard books={book} getFavoriteListHandler={getFavoriteListHandler}/>
-            })
-        }
-        </>
-    )
+      <>
+      <div id="favpage">
+
+   <h1 id="favheader">Favorite List</h1>
+        <div id="favline"></div>
+      </div>
+
+
+        <div className="cards-container">
+          {books.map((book) => {
+            return (
+              <div id="cards" key={book.bookID}>
+                <FavCard
+                  books={book}
+                  getFavoriteListHandler={getFavoriteListHandler}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </>
+    );
 }
