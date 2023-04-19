@@ -1,10 +1,10 @@
-#b{
-    /* background-image: url("../../../assesst/signinbk1.jpg");
+/*#b{
+     background-image: url("../../../assesst/signinbk1.jpg");
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto; */
+    height: auto; 
     background-image: url('../../../assesst/signinbk1.jpg');
     justify-content: center;
     align-items: center;
@@ -21,14 +21,14 @@
 #aboutDiv{
     display: flex;
     padding-bottom: 150px;
-    /* margin-top: 40px; */
-    /* background-image: url("../../../assesst/signinbk1.jpg"); */
-    /* background-repeat: no-repeat; */
+     margin-top: 40px; 
+     background-image: url("../../../assesst/signinbk1.jpg"); 
+     background-repeat: no-repeat; 
     width: 50%;
     height: 100%;
     flex-direction: column;
     text-align: center;
-    /* align-items: center; */
+    /* align-items: center; 
     justify-content: center;
     padding-left: 250pt;
     padding-top: 75pt;
@@ -50,4 +50,4 @@ margin-top: 120pt;
             font-family:   'Trebuchet MS', sans-serif;
             color:rgba(59, 45, 17, 0.534);
             font-size: 18pt;
-        }
+        }*/
