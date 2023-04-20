@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 // import Dropdown from 'react-bootstrap/Dropdown';
 import { Dropdown } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
-import "./Details.css" 
+import "./Details.css"
 
 
 
@@ -43,11 +43,11 @@ export default function Details(props) {
                         books.map(books => {
                             if (books.bookID == id) {
                                 return (
-                                    <Card id="singlecard" style={{ width: '18rem' }}> 
+                                    <Card id="singlecard" style={{ width: '18rem' }}>
                                         <Card.Body id="cardbody">
                                             <Card.Text class="card-description">
                                                 Author : {books.author}
-                                                <br />
+                                                {/* <br /> */}
                                                 {/* </Card.Text> */}
                                                 {/* <Card.Text class="card-description"> */}
                                                 Description about the book :{books.description}
@@ -110,7 +110,5 @@ export default function Details(props) {
                 </div>
             </div>
         </>
-
-
     );
 }

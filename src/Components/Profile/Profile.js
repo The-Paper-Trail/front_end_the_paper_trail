@@ -92,55 +92,56 @@ function Profile() {
     }, []);
 
     return (
-        <>
-            <div id="propage">
-            <br />
-                {/* <h1 className="profile">Profile</h1> */}
-                <img id="userimg" src={image} alt="Profile image" />
-                <h3 id="username">{storedUsername}</h3>
-                <h6> ✩ Description of my content</h6>
-                {/* <img src={image} alt="Profile image" /> */}
-                <div class="description-box">
-                    <p>{description}</p>
-                </div>
+      <>
+        <div id="propage">
+          <br />
+          {/* <h1 className="profile">Profile</h1> */}
+          <div id="profile1">
+            <img id="userimg" src={image} alt="Profile image" />
+            <h3 id="username">{storedUsername}</h3>
+            <h6> ✩ Description of my content</h6>
+            {/* <img src={image} alt="Profile image" /> */}
+            <div class="description-box">
+              <p>{description}</p>
+            </div>
 
-                <Button id="update" variant="primary" onClick={handleShowModal}>
-                ✏
-                </Button>
-                <div id="proline"></div>
-                <Modal show={showModal} onHide={handleCloseModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Update</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form  onSubmit={handleSubmit}>
-                            <Form.Group controlId="formDescription">
-                                <Form.Label>Description</Form.Label>
-                                <Form.Control
-                                 name="discription"
-                                  type="text"
-                                  />
-                            </Form.Group>
+            <Button id="update" variant="primary" onClick={handleShowModal}>
+              ✏
+            </Button>
+            <div id="proline"></div>
+            <Modal show={showModal} onHide={handleCloseModal}>
+              <Modal.Header closeButton>
+                <Modal.Title>Update</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group controlId="formDescription">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control name="discription" type="text" />
+                  </Form.Group>
 
-                            <Form.Group controlId="formImage">
-                                <Form.Label>Image</Form.Label>
-                                <Form.Control
-                                 name="image"
-                                  type="text" />
-                            </Form.Group>
-                            <Button variant="secondary" onClick={handleCloseModal}>
-                                Cancel
-                            </Button>
-                            <Button variant="primary" type="submit" onClick={handleCloseModal}>
-                                Save Changes
-                            </Button>
-                        </Form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                    </Modal.Footer>
-                </Modal>
-            </div >
-        </>
+                  <Form.Group controlId="formImage">
+                    <Form.Label>Image</Form.Label>
+                    <Form.Control name="image" type="text" />
+                  </Form.Group>
+                  <Button variant="secondary" onClick={handleCloseModal}>
+                    Cancel
+                  </Button>
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    onClick={handleCloseModal}
+                  >
+                    Save Changes
+                  </Button>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer></Modal.Footer>
+            </Modal>
+          </div>
+          <br/>
+        </div>
+      </>
     );
 }
 

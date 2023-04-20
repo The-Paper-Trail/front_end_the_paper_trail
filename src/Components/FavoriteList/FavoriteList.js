@@ -48,7 +48,7 @@ export default function Favorite() {
             );
           })
         ) : (
-          <h1>there is no books in your Favorite list</h1>
+          <h1 id="noadd">there is no books in your Favorite list</h1>
         )}
       </div>
     </div>
