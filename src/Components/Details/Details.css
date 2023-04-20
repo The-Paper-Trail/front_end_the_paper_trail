@@ -1,0 +1,56 @@
+#homeline{
+    background-image:linear-gradient(90deg, rgb(58, 47, 13),
+    rgb(102, 95, 73), rgba(102, 95, 73, 0.055));
+    height:0.1rem;
+    width: 70%;
+     display: inline-block;
+     margin-left:10px;
+  }
+
+  .card-description {
+    font-size: 17px;
+  }
+
+  #dropdownLabel {
+    margin-bottom: 3%;
+    color:rgb(78, 53, 31);
+     font-size: 18px; 
+  }
+
+  #show{
+      margin: 10% 30%;
+      color :aliceblue
+  }
+  #drop {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    width: 100px;
+    margin-top: 2%;
+  }
+  #drop:hover {
+    background-color: rgb(124,86,51);
+    color:white;
+  }
+   .item {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #ccc;
+  }
+  .item:last-child {
+    border-bottom: none;
+  }
+   .item:hover {
+    background-color: #F1F1F1;
+    color: #555;
+  }

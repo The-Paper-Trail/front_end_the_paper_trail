@@ -34,19 +34,23 @@ export default function Favorite() {
 
   return (
     <div className="firstElement">
-      {Array.isArray(books) && books.length > 0 ? (
-        <>
-          {
-            books.map(book => {
-              return <FavCard books={book} getFavoriteListHandler={getFavoriteListHandler} />
-            })
-          }
-        </>
-      ) : (
-        <>
+      <div id="favpage">
+        <h1 id="favheader">Favorite List</h1>
+        <div id="favline"></div>
+      </div>
+      <div className="cards-container">
+        {Array.isArray(books) && books.length > 0 ? (
+          books.map((book) => {
+            return (
+              <div id="cards" key={book.bookID}>
+                <FavCard books={book} getFavoriteListHandler={getFavoriteListHandler} />
+              </div>
+            );
+          })
+        ) : (
           <h1>there is no books in your Favorite list</h1>
-        </>
-      )}
+        )}
+      </div>
     </div>
   )
 }
