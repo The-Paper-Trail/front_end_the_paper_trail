@@ -87,7 +87,7 @@ function Profile() {
         }
 
         else {
-            navigate("/", { replace: true });
+            navigate("/signin", { replace: true });
         }
     }, []);
 
