@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import FavCard from "./FavCard/FavCard";
 import { useNavigate } from "react-router-dom";
+import "./FavoriteList.css"
+
+
 
 export default function Favorite() {
   const [books, getBooks] = useState([]);
@@ -31,19 +34,23 @@ export default function Favorite() {
 
   return (
     <div className="firstElement">
-      {Array.isArray(books) && books.length > 0 ? (
-        <>
-          {
-            books.map(book => {
-              return <FavCard books={book} getFavoriteListHandler={getFavoriteListHandler} />
-            })
-          }
-        </>
-      ) : (
-        <>
-          <h1>there is no books in your Favorite list</h1>
-        </>
-      )}
+      <div id="favpage">
+        <h1 id="favheader">Favorite List</h1>
+        <div id="favline"></div>
+      </div>
+      <div className="cards-container">
+        {Array.isArray(books) && books.length > 0 ? (
+          books.map((book) => {
+            return (
+              <div id="cards" key={book.bookID}>
+                <FavCard books={book} getFavoriteListHandler={getFavoriteListHandler} />
+              </div>
+            );
+          })
+        ) : (
+          <h1 id="noadd">there is no books in your Favorite list</h1>
+        )}
+      </div>
     </div>
   )
 }

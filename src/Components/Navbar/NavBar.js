@@ -17,36 +17,58 @@ export default function NavBar() {
     <>
       {storedData ? (
         <>
-          {" "}
           <Nav>
             <div id="navbar">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/favpage">Favorite </Nav.Link>
-              <Nav.Link href="/profile">Profile</Nav.Link>
+              <Nav.Link id="homenav" href="/">
+                Home{" "}
+              </Nav.Link>
+              <Nav.Link id="favnav" href="/favpage">
+                Favorite{" "}
+              </Nav.Link>
+              <Nav.Link id="profilenav" href="/profile">
+                Profile
+              </Nav.Link>
+              <Nav.Link id="aboutnav" href="/about">
+                About Us
+              </Nav.Link>
 
-            <Button id="signout" variant="danger" onClick={() => handlesignout()}>
-                sign out
-              </Button>{" "}
-               </div>
+
+
+            </div>
+           
+<Button
+              id="signout"
+              variant="danger"
+              onClick={() => handlesignout()}
+            >
+              sign out
+            </Button>
+
+
           </Nav>
         </>
       ) : (
         <>
-          {" "}
           <Nav>
-
             <div id="navbar">
-              <Nav.Link id="homenav" href="/">Home</Nav.Link>
-
-              <Nav.Link id="favnav" href="/favpage">Favorite </Nav.Link>
-              <Nav.Link id="profilenav" href="/profile">Profile</Nav.Link>
-              <div id="in">
-<Nav.Link href="/signin" id="signin">
-                Sign In
+              <Nav.Link id="homenav" href="/">
+                Home
               </Nav.Link>
-              </div>
+              <Nav.Link id="favnav" href="/favpage">
+                Favorite{" "}
+              </Nav.Link>
+              <Nav.Link id="profilenav" href="/profile">
+                Profile
+              </Nav.Link>
+              <Nav.Link id="aboutnav" href="/about">
+                About Us
+              </Nav.Link>
 
             </div>
+             <Nav.Link href="/signin" id="signin">
+                Sign In
+              </Nav.Link>
+
           </Nav>
         </>
       )}

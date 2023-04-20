@@ -9,7 +9,7 @@ import Footer from './Components/Footer/Footer';
 import Details from './Components/Details/Details';
 import FavPage from './Components/FavoriteList/FavoriteList'
 import Profile from './Components/Profile/Profile';
-
+import AboutUs from './Components/AboutUs/AboutUs';
 
 
 function App() {
@@ -27,7 +27,8 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="//favpage" element={<FavPage />} />
+          <Route path="/favpage" element={<FavPage />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
         <Footer/>
       </div>

@@ -1,16 +1,14 @@
-#cards{
-    /* display:inline-block; */
-    width: 550px;
-    height: 390px;
-     margin:3px;
-
-    }
+#cards {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    margin: 3px;
+}
 
 .cards-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap:2rem;
-
-
+    gap: 2rem;
+    margin:  3rem;
 }
