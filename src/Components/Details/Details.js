@@ -47,7 +47,7 @@ export default function Details(props) {
                                         <Card.Body id="cardbody">
                                             <Card.Text class="card-description">
                                                 Author : {books.author}
-                                                {/* <br /> */}
+                                                <br />
                                                 {/* </Card.Text> */}
                                                 {/* <Card.Text class="card-description"> */}
                                                 Description about the book :{books.description}
