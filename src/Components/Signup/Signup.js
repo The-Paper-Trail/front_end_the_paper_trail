@@ -86,53 +86,62 @@ export default function Signup(props) {
 
   return (
     <>
-      <div className="auth">
-        <Form className="signform" onSubmit={handleSubmit}>
-          <Form.Group controlId="name">
-            <Form.Label>Full Name</Form.Label>
-            <Form.Control
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Full Name"
-              isInvalid={errors.name}
-            />
-          </Form.Group>
+      <div id="signinpage">
+        <div id="story">
+          <h1 id="story1">Sign up</h1>
+          <p id="story2">and Start the story ..</p>
+        </div>
+        <div className="auth">
+          <Form className="signform" onSubmit={handleSubmit}>
+            <Form.Group controlId="name">
+              <Form.Label>Full Name</Form.Label>
+              <Form.Control
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Full Name"
+                isInvalid={errors.name}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              isInvalid={errors.email}
-            />
-          </Form.Group>
+            <Form.Group controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                isInvalid={errors.email}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              isInvalid={errors.password}
-            />
-          </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                isInvalid={errors.password}
+              />
+            </Form.Group>
 
-          <Button variant="primary" className="submit" type="submit">
-            Sign up
-          </Button>
-        </Form>
+            <Button
+              variant="primary"
+              id="submit"
+               className="submit"
+              type="submit"
+            >
+              Sign up
+            </Button>
+          </Form>
 
-        <Nav>
-
-          <Nav.Link href="/signin" id="signin">
-            Already have an account? Sign in
-          </Nav.Link>
-        </Nav>
-
+          <Nav>
+            <Nav.Link href="/signin" id="signup">
+              Already have an account? Sign in
+            </Nav.Link>
+          </Nav>
+        </div>
       </div>
     </>
   );

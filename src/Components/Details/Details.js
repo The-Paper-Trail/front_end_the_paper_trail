@@ -6,8 +6,8 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 // import Dropdown from 'react-bootstrap/Dropdown';
 import { Dropdown } from "rsuite";
-import "rsuite/dist/rsuite.min.css";
-
+// import "rsuite/dist/rsuite.min.css";
+import "./Details.css";
 
 
 export default function Details(props) {
@@ -33,47 +33,80 @@ export default function Details(props) {
 
     // console.log(books)
     return (
+      <>
+        <div id="show">
 
-        <>
+          <div id="homeline"></div>
+          <div id="card">
+            {books.map((books) => {
+              // console.log(books.bookID  , id);
+              if (books.bookID == id) {
+                return (
+                  <Card id="singlecard" style={{ width: "18rem" }}>
+                    <Card.Body id="cardbody">
+                      <Card.Title id="card-title">{books.title}</Card.Title>
+                      <Card.Text class="card-description">
+                        Author : {books.author}
+                        <br />
+                        {/* </Card.Text> */}
+                        {/* <Card.Text class="card-description"> */}
+                        Description about the book :{books.description}
+                        <br />
+                        {/* </Card.Text> */}
+                        {/* <Card.Text class="card-description"> */}
+                        Publisher : {books.publisher}
+                        <br />
+                        {/* </Card.Text> */}
+                        {/* <Card.Text class="card-description"> */}
+                        Contribution {books.contributor}
+                        <br />
+                        {/* </Card.Text> */}
+                        {/* <Card.Text class="card-description"> */}
+                        Are you thinking of buying it?
+                        {/* </Card.Text> */}
+                        {/* <Card.Text class="card-description"> */}
+                        Choose site to buy from
+                      </Card.Text>
+                      <Dropdown id="drop" title="Buy">
+                        <Dropdown.Item
+                          target="_blank"
+                          class="item"
+                          as="a"
+                          href={books.amazon_link}
+                        >
+                          Amazon
+                        </Dropdown.Item>
 
-            {
+                        <Dropdown.Item
+                          target="_blank"
+                          class="item"
+                          as="a"
+                          href={books.apple_books_link}
+                        >
+                          Apple Books
+                        </Dropdown.Item>
 
-                books.map(books => {
-                    // console.log(books.bookID  , id);
-                    if (books.bookID == id) {
-                        return (
-                            <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src={books.book_image} />
-                                <Card.Body>
-                                    <Card.Title>{books.title}</Card.Title>
-                                    <Card.Text>Author : {books.author}</Card.Text>
-                                    <Card.Text>Description about the book : <br></br>{books.description}</Card.Text>
-                                    <Card.Text>Publisher : {books.publisher}</Card.Text>
-                                    <Card.Text>Contribution {books.contributor}</Card.Text>
-                                    <Card.Text>Are you thinking of buying it?</Card.Text>
-                                    <Card.Text>Choose site to buy from</Card.Text>
-                                    <Dropdown title="Buy">
-                                        <Dropdown.Item as="a" href={books.amazon_link}>
-                                            Amazon
-                                        </Dropdown.Item>
-
-                                        <Dropdown.Item as="a" href={books.apple_books_link}>
-                                            Apple Books
-                                        </Dropdown.Item>
-
-                                        <Dropdown.Item as="a" href={books.barnes_and_noble_link}>
-                                            Barnes and Noble
-                                        </Dropdown.Item>
-                                    </Dropdown>
-                                </Card.Body>
-                            </Card>
-                        )
-                    }
-
-                })
-            }
-        </>
-
-
+                        <Dropdown.Item
+                          target="_blank"
+                          class="item"
+                          as="a"
+                          href={books.barnes_and_noble_link}
+                        >
+                          Barnes and Noble
+                        </Dropdown.Item>
+                      </Dropdown>
+                    </Card.Body>
+                    <Card.Img
+                      id="card-image"
+                      variant="top"
+                      src={books.book_image}
+                    />
+                  </Card>
+                );
+              }
+            })}
+          </div>
+        </div>
+      </>
     );
 }

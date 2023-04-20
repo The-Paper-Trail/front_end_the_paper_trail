@@ -4,8 +4,7 @@
   width: 100%;
  background-repeat: no-repeat;
   background-size: cover;
-  /* background-position: center center; Center the background image horizontally and vertically */
-  /* background-image: linear-gradient( rgba(0, 0, 0, 0), rgb(102, 95, 73), rgba(102, 95, 73, 0.055));; */
+/* position: relative; */
 }
 
 #quote {
@@ -25,18 +24,19 @@
 #line {
   background-image:linear-gradient(90deg, rgb(102, 95, 73, 0.055), rgb(102, 95, 73), rgba(102, 95, 73, 0.055));
   height: 0.009rem;
-  width: 60%;
+  width: 90%;
   margin-left: 30%;
   margin-top: 0;
 }
 
 #line2 {
   background-image:linear-gradient( rgb(32, 25, 5),
-  rgba(36, 29, 7, 0.856),rgba(36, 29, 7, 0.418), rgba(233, 233, 233, 0.082));
+  rgba(36, 29, 7, 0.432), rgba(233, 233, 233, 0.199));
   height: 3rem;
   width: 100%;
-  margin-top: 44px;
-
+  margin-top: 2.5%;
+ padding-top:20%;
+/* position: absolute; */
 }
 
 
@@ -59,10 +59,13 @@
 
   #line {
     margin-left: 5%;
-    width: 50%;
+    width: 55%;
   }
+
+
    #line2 {
     width: 100%;
+    /* padding-bottom: 5%; */
   }
 }
 
@@ -95,10 +98,11 @@
 }
 
 #line {
-   background-image: linear-gradient(90deg, rgb(102, 95, 73, 0.055), rgb(102, 95, 73), rgba(102, 95, 73, 0.055));
+   background-image: linear-gradient(90deg, rgb(102, 95, 73, 0.055),
+    rgb(102, 95, 73), rgba(102, 95, 73, 0));
   height: 0.09rem;
-  width: 25%;
-  margin-left: 32%;
+  width: 69%;
+  margin-left: 29%;
   margin-top: 0;
 }
 
